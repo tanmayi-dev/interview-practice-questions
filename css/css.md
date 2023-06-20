@@ -1,0 +1,11 @@
+- What is the difference between css and css3?
+- What are the selector in css?
+- What is media query in css?
+- What is different position in css?
+- What is bom in css?
+- What is difference between PX, unit, em, rem in css?
+- What is flex box in css?
+- What is pseudo selector in css?
+- How to make website responsive?
+- What are breakpoint for viewport responsive device?
+- Why we use box-sizing in css?
