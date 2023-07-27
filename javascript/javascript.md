@@ -146,6 +146,72 @@ How does javascript figures out that a promise is resolved?
 [DOM related JS questions](https://www.thatjsdude.com/interview/dom.html)
 
 ---
+Hkirat Questions
+
+1. What is the difference between let, const and var ?
+2. Is the code given below valid? If yes, what property of JS does it use?
+   ```js
+   x = 5; // Assign 5 to x
+   elem = document.getElementById("demo"); // Find an element
+   elem.innerHTML = x;                     // Display x in the element
+
+   var x; // Declare x
+   ```
+<details>
+<summary>Answer</summary>
+<p>
+It is valid and it uses hoisting.
+This snippet won't work for let. (Temporal Dead Zone)
+</p>
+</details>
+   
+3. Is this function correct or incorrect
+    ```js
+    const arr = [1,2,3]
+    arr.forEach(function(val) {
+        if(val%2 === 0) {
+            break;
+        }
+    console.log(val);
+    })
+    ```
+<details>
+<summary>Answer</summary>
+<p>
+This function is incorrect because `break` is valid inside a loop. 
+But in the above code snippet, it is used inside a function and `break` is not valide inside a function.
+
+Correct way to write it will be : 
+```js
+const arr = [1,2,3]
+for (let i = 0; i < arr.length; i++) {
+    if(arr[i] % 2 === 0) {
+        break;
+    }
+console.log(val);
+}
+```
+OR
+```js
+const arr = [1,2,3];
+let done = false;
+arr.forEach(function(val) {
+    if(val%2 === 0) {
+        done = true;
+    }
+    if(!done) {
+    console.log(val);
+    }
+})
+```
+
+</p>
+</details>
+
+    
+5. 
+
+---
 
 - What is EcmaScript in JavaScript?
 - What is difference between let, const and var?
