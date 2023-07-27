@@ -146,7 +146,7 @@ How does javascript figures out that a promise is resolved?
 [DOM related JS questions](https://www.thatjsdude.com/interview/dom.html)
 
 ---
-Hkirat Questions
+**Hkirat Questions**
 
 1. What is the difference between let, const and var ?
 2. Is the code given below valid? If yes, what property of JS does it use?
