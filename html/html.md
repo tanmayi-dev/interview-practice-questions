@@ -106,7 +106,7 @@ What are the formatting tags in html?
 
 ### Question
 
-What is difference <b> and <strong> in html?
+What is difference `<b>` and `<strong>` in html?
 
 <details>
 <summary>Answer</summary>
