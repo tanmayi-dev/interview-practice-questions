@@ -1,6 +1,202 @@
 Add questions from HKirat sing
 Add copy of JS inteview questions - document
 
+#### 1. Question
+
+```javascript
+const work = "hello";
+word[1] = "m";
+console.log(word);
+```
+
+<details>
+<summary>Answer</summary>
+<p>
+
+`hello`
+Strings are immutable.
+
+</p>
+</details>
+
+---
+
+#### 2. Question
+
+```javascript
+console.log(a);
+
+const a = 1;
+```
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 3. Question
+
+Explain Currying and Hoisting in Javascript.
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 4. Question
+
+Different between Typescript and Javascript
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 5. Question
+
+Explain promise chaining in javascript?
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 6. Question
+
+How does javascript figures out that a promise is resolved?
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 7. Question
+
+JavaScript Fundamentals and tricky output based questions which indirectly covered topics like closures, hoisting, var scope vs let,const scope, IIFE, callback vs promises vs async await, how to handle dependent promise logic / promise chaining.
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 8. Question
+
+Implement Function.prototype.bind polyfill
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 9. Question
+
+Event loop, and how setTimeout and Promises are queued
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 10. Question
+
+Prototypal Inheritance in Javscript and how does prototype chain works?
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 11. Question
+
+What is a reduce function in Javascript. How to write a polyfill of a reduce function? He wanted me to cover all cases while writing a pollyfill of reduce. (check MDN documentation )
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 12. Question
+
+How does Redux Saga works, what problem it solves and how can we achieve our goals without redux saga?
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 13. Question
+
+How will you design a calendar? What controls will you make? What events will you attach? How will you render a numbers in calendar for every month?
+
+- write JS functions
+- Write CSS layout
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+#### 14. Question
+
+questions on javascript prototypes and some trick questions.
+learn prototypes here
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
 #### 1. What is the output of the following code? Give reason for the same
 
 ```javascript
