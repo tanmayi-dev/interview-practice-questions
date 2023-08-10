@@ -1,7 +1,95 @@
-Add questions from HKirat sing
+# JavaScript
+
+## General Questions
+
+### Difference between `async` and `defer`
+
+<details>
+<summary>Answer</summary>
+<p>
+
+![](./images/async-1.png)
+
+`<script>`
+![](./images/script.png)
+
+Let’s start by defining what **`<script>`** without any attributes does. The HTML file will be parsed until the script file is hit, at that point parsing will stop and a request will be made to fetch the file (if it’s external). The script will then be executed before parsing is resumed.
+
+`<script async>`
+
+![](./images/script-async.png)
+
+**async** downloads the file during HTML parsing and will pause the HTML parser to execute it when it has finished downloading.
+
+`<script defer>`
+
+![](./images/script-defer.png)
+
+**defer** downloads the file during HTML parsing and will only execute it after the parser has completed. **defer** scripts are also guaranteed to execute in the order that they appear in the document.
+
+**When should I use what?**
+Typically, you want to use async where possible, then defer, then no attribute.
+async > defer > no attribute
+
+- If the script is modular and does not rely on any scripts then use async
+- If the script relies upon or is relied upon by another script then use defer
+- If the script is small and is relied upon by an async script then use an inline script with no attributes placed above the async scripts
+
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+
+---
+
+## Questions asked in Interviews
+
+<!-- Add questions from HKirat sing
 Add copy of JS inteview questions - document
 
-#### 1. Question
+### 1. Question
 
 ```javascript
 const work = "hello";
@@ -21,7 +109,7 @@ Strings are immutable.
 
 ---
 
-#### 2. Question
+### 2. Question
 
 ```javascript
 console.log(a);
@@ -38,7 +126,7 @@ const a = 1;
 
 ---
 
-#### 3. Question
+### 3. Question
 
 Explain Currying and Hoisting in Javascript.
 
@@ -51,7 +139,7 @@ Explain Currying and Hoisting in Javascript.
 
 ---
 
-#### 4. Question
+### 4. Question
 
 Different between Typescript and Javascript
 
@@ -64,7 +152,7 @@ Different between Typescript and Javascript
 
 ---
 
-#### 5. Question
+### 5. Question
 
 Explain promise chaining in javascript?
 
@@ -77,7 +165,7 @@ Explain promise chaining in javascript?
 
 ---
 
-#### 6. Question
+### 6. Question
 
 How does javascript figures out that a promise is resolved?
 
@@ -90,7 +178,7 @@ How does javascript figures out that a promise is resolved?
 
 ---
 
-#### 7. Question
+### 7. Question
 
 JavaScript Fundamentals and tricky output based questions which indirectly covered topics like closures, hoisting, var scope vs let,const scope, IIFE, callback vs promises vs async await, how to handle dependent promise logic / promise chaining.
 
@@ -103,7 +191,7 @@ JavaScript Fundamentals and tricky output based questions which indirectly cover
 
 ---
 
-#### 8. Question
+### 8. Question
 
 Implement Function.prototype.bind polyfill
 
@@ -116,7 +204,7 @@ Implement Function.prototype.bind polyfill
 
 ---
 
-#### 9. Question
+### 9. Question
 
 Event loop, and how setTimeout and Promises are queued
 
@@ -129,7 +217,7 @@ Event loop, and how setTimeout and Promises are queued
 
 ---
 
-#### 10. Question
+### 10. Question
 
 Prototypal Inheritance in Javscript and how does prototype chain works?
 
@@ -142,7 +230,7 @@ Prototypal Inheritance in Javscript and how does prototype chain works?
 
 ---
 
-#### 11. Question
+### 11. Question
 
 What is a reduce function in Javascript. How to write a polyfill of a reduce function? He wanted me to cover all cases while writing a pollyfill of reduce. (check MDN documentation )
 
@@ -155,7 +243,7 @@ What is a reduce function in Javascript. How to write a polyfill of a reduce fun
 
 ---
 
-#### 12. Question
+### 12. Question
 
 How does Redux Saga works, what problem it solves and how can we achieve our goals without redux saga?
 
@@ -168,7 +256,7 @@ How does Redux Saga works, what problem it solves and how can we achieve our goa
 
 ---
 
-#### 13. Question
+### 13. Question
 
 How will you design a calendar? What controls will you make? What events will you attach? How will you render a numbers in calendar for every month?
 
@@ -183,7 +271,7 @@ How will you design a calendar? What controls will you make? What events will yo
 
 ---
 
-#### 14. Question
+### 14. Question
 
 questions on javascript prototypes and some trick questions.
 learn prototypes here
@@ -197,7 +285,7 @@ learn prototypes here
 
 ---
 
-#### 1. What is the output of the following code? Give reason for the same
+### 1. What is the output of the following code? Give reason for the same
 
 ```javascript
 const work = "hello";
@@ -209,10 +297,10 @@ console.log(word);
 <summary>Answer</summary>
 <p>
 
-Output :  
+Output :
 `hello`
 
-Reason :  
+Reason :
 Strings are immutable.
 
 </p>
@@ -220,7 +308,7 @@ Strings are immutable.
 
 ---
 
-#### 2. Is the code given below valid? If yes, what property of JS does it use?
+### 2. Is the code given below valid? If yes, what property of JS does it use?
 
 ```javascript
 x = 5; // Assign 5 to x
@@ -234,14 +322,14 @@ var x; // Declare x
 <details>
 <summary>Answer</summary>
 <p>
-The given code is valid.     <br/>  
+The given code is valid.     <br/>
 <strong>Hoisting</strong> is the property of JS used.
 </p>
 </details>
 
 ---
 
-#### 3. Question
+### 3. Question
 
 ```javascript
 console.log(a);
@@ -252,7 +340,7 @@ const a = 1;
 <details>
 <summary>Answer</summary>
 <p>
-Output:    
+Output:
 ```javascript
 Uncaught ReferenceError: a is not defined
 ```
@@ -265,7 +353,7 @@ Hoisting is not done for these
 
 ---
 
-#### 3. Question
+### 3. Question
 
 Explain Currying and Hoisting in Javascript.
 
@@ -278,7 +366,7 @@ Explain Currying and Hoisting in Javascript.
 
 ---
 
-#### 4. Question
+### 4. Question
 
 Different between Typescript and Javascript
 
@@ -291,7 +379,7 @@ Different between Typescript and Javascript
 
 ---
 
-#### 5. Question
+### 5. Question
 
 ```html
 <body>
@@ -313,7 +401,7 @@ What will happen to DOM tree if some issue happens in script tag?
 
 ---
 
-#### 6. Question
+### 6. Question
 
 Explain promise chaining in javascript?
 
@@ -326,7 +414,7 @@ Explain promise chaining in javascript?
 
 ---
 
-#### 7. Question
+### 7. Question
 
 How does javascript figures out that a promise is resolved?
 
@@ -360,7 +448,7 @@ It is valid and it uses hoisting.
 This snippet won't work for let. (Temporal Dead Zone)
 </p>
 </details>
-   
+
 3. Is this function correct or incorrect
     ```js
     const arr = [1,2,3]
@@ -374,10 +462,10 @@ This snippet won't work for let. (Temporal Dead Zone)
 <details>
 <summary>Answer</summary>
 <p>
-This function is incorrect because `break` is valid inside a loop. 
+This function is incorrect because `break` is valid inside a loop.
 But in the above code snippet, it is used inside a function and `break` is not valide inside a function.
 
-Correct way to write it will be : 
+Correct way to write it will be :
 ```js
 const arr = [1,2,3]
 for (let i = 0; i < arr.length; i++) {
@@ -404,8 +492,8 @@ arr.forEach(function(val) {
 </p>
 </details>
 
-    
-5. 
+
+5.
 
 ---
 
@@ -445,4 +533,4 @@ arr.forEach(function(val) {
 - What is function currying in js?
 - What is mutation observer in js?
 - What is memoization in js?
-- What is Debounce and Throttle in js?
+- What is Debounce and Throttle in js? -->

@@ -1,3 +1,5 @@
+# Advanced Frontend Questions
+
 Tag: AT&T
 
 ### What kind of model do you use for message queue?
@@ -41,9 +43,7 @@ When dealing with multiple pub-sub models in a message queue, scalability can be
 
 Tag: AT&T
 
-### How will you integrate payment gateway and manage sessions? Where will you store session id?
-
-- Will you store session id on client side or on server side
+### How will you integrate payment gateway and manage sessions? Where will you store session id? Will you store session id on client side or on server side
 
 <details>
 <summary>Answer</summary>
