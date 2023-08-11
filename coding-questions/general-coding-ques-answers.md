@@ -63,3 +63,9 @@ console.log("Sorted array:", arrayToSort);
 ### Write a program for Binary Search
 
 ### Write a program for Linear Search
+
+9. Write code to sort an array of numbers using loops
+
+10. Write code to reverse a string
+
+11. Write code to remove the duplicates from the array of integers

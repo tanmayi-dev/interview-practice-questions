@@ -359,3 +359,11 @@ WITH options;
 </details>
 
 ---
+
+7. SQL queries
+
+- write a query to select customer name starting with 'a' and ending with 'a'
+- write a query to select the name of customers whose salary is between 5000 and 10000
+- write a query to select maximum salary from the table
+
+8. How many records does the 3rd query in the above question return

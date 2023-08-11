@@ -125,6 +125,35 @@ HTTP methods (also known as HTTP verbs) are fundamental concepts in the HTTP pro
 <summary>Answer</summary>
 <p>
 
+**GET:**
+
+- 200 OK: The request was successful, and the response body contains the requested data.
+- 404 Not Found: The requested resource was not found on the server.
+
+**POST:**
+
+- 201 Created: The request was successful, and a new resource was created on the server.
+- 400 Bad Request: The server could not understand the request, often due to invalid parameters.
+
+**PUT:**
+
+- 200 OK: The request was successful, and the resource was updated.
+- 204 No Content: The request was successful, and the response body is empty (no data to send back).
+
+**PATCH:**
+
+- 200 OK: The request was successful, and the resource was partially updated.
+- 204 No Content: The request was successful, and the response body is empty (no data to send back).
+
+**DELETE:**
+
+- 204 No Content: The resource was successfully deleted, and the response body is empty.
+- 404 Not Found: The resource to be deleted was not found on the server.
+
+**OPTIONS:**
+
+- 200 OK: The server successfully responded to an OPTIONS request, providing information about allowed communication options for the target resource.
+
 Informational responses (100 – 199)
 Successful responses (200 – 299)
 Redirection messages (300 – 399)
@@ -178,5 +207,9 @@ Session storage, cookies, and localStorage are all techniques for storing data i
 - localStorage is often used for storing larger amounts of data, caching resources, or maintaining application state across different sessions.
 
 In summary, sessionStorage and localStorage are client-side storage options that provide a way to store data in a user's browser. sessionStorage is temporary and tied to a single session, while localStorage is more persistent and lasts beyond a session. Cookies, on the other hand, are small pieces of data that are sent between the client and server with each request and are often used for various purposes, including tracking and authentication. The choice of which mechanism to use depends on factors such as data size, persistence requirements, and the specific use case of your web application.
+
+Local Storage – The data is not sent back to the server for every HTTP request (HTML, images, JavaScript, CSS, etc) – reducing the amount of traffic between client and server. It will stay until it is manually cleared through settings or program.
+
+Session Storage – It is similar to local storage; the only difference is while data stored in local storage has no expiration time, data stored in session storage gets cleared when the page session ends. Session Storage will leave when the browser is closed.
 
 ---

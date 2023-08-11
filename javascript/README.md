@@ -110,6 +110,145 @@ The negative infinity in JavaScript is a constant value that is used to represen
 
 ---
 
+### What is the ‘Strict’ mode in JavaScript and how can it be enabled?
+
+<details>
+<summary>Answer</summary>
+<p>
+Strict mode is a way to introduce better error-checking into your code.
+
+When you use strict mode, you cannot use implicitly declared variables, or assign a value to a read-only property, or add a property to an object that is not extensible.
+You can enable strict mode by adding “use strict” at the beginning of a file, a program, or a function.
+
+</p>
+</details>
+
+---
+
+### Explain call, apply and bind
+
+<details>
+<summary>Answer</summary>
+<p>
+
+call, apply, and bind are methods available on JavaScript functions that allow you to control the value of this within the function and pass arguments in different ways. They are commonly used for function invocation and for borrowing methods from other objects. Here's an explanation of each:
+
+**call:**
+
+- The call method is used to invoke a function and explicitly specify the value of this.
+- It also allows you to pass arguments individually (comma-separated) to the function.
+- Syntax: function.call(thisValue, arg1, arg2, ...)
+
+**apply:**
+
+- The apply method is similar to call, but it allows you to pass arguments as an array.
+- It is often used when the number of arguments is not known in advance or when you want to apply an array of arguments to a function.
+- Syntax: function.apply(thisValue, [arg1, arg2, ...])
+
+**bind:**
+
+- The bind method returns a new function with a fixed value of this, which you can invoke later.
+- It is useful when you want to create a new function with a specific context (this) that you can use multiple times.
+- Syntax: function.bind(thisValue, arg1, arg2, ...)
+
+```javascript
+function greet(message, punctuate) {
+  console.log(`${message}, ${this.name}${punctuate}`);
+}
+
+const person1 = { name: "Alice" };
+const person2 = { name: "Bob" };
+
+// Using call
+greet.call(person1, "Hello", "!"); // Output: Hello, Alice!
+greet.call(person2, "Hi", "."); // Output: Hi, Bob.
+
+// Using apply
+greet.apply(person1, ["Hey", "..."]); // Output: Hey, Alice...
+greet.apply(person2, ["Hola", "?"]); // Output: Hola, Bob?
+
+// Using bind
+const greetPerson1 = greet.bind(person1, "Hi");
+const greetPerson2 = greet.bind(person2, "Hey");
+greetPerson1("!"); // Output: Hi, Alice!
+greetPerson2("?"); // Output: Hey, Bob?
+```
+
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
 ## Questions asked in Interviews
 
 ### Question
@@ -222,6 +361,59 @@ const a = 1;
 <details>
 <summary>Answer</summary>
 <p>
+
+Prototypal inheritance is a fundamental concept in JavaScript that allows objects to inherit properties and methods from other objects. In JavaScript, every object has an associated prototype object, and objects can inherit properties and methods from their prototype.
+
+Here's an overview of how prototypal inheritance and the prototype chain work:
+
+Prototype Object:
+
+Every object in JavaScript has a prototype object, which is used as a template for creating new objects.
+Objects inherit properties and methods from their prototype, which forms the basis of inheritance.
+Constructor Functions:
+
+Constructor functions are used to create objects that share the same prototype.
+When you create an object using a constructor function, the new object's prototype is set to the prototype of the constructor function.
+prototype Property:
+
+The prototype property of a constructor function is an object that becomes the prototype of objects created using that constructor.
+Properties and methods defined on the prototype are shared among all instances created from the constructor.
+**proto** Property (deprecated, use with caution):
+
+Each object has a special property called **proto** that points to its prototype object.
+This property was used to manually access and modify the prototype chain, but it's now recommended to use Object.getPrototypeOf() and Object.setPrototypeOf() instead.
+Prototype Chain:
+
+The prototype chain is a chain of prototype objects that links an object to its ancestors.
+When you access a property or method on an object, JavaScript looks up the prototype chain to find the property or method. If not found in the object itself, it looks in its prototype, and so on.
+The prototype chain continues until the top-level object (Object.prototype) is reached, which is the base prototype for all objects.
+Here's a simple example illustrating prototypal inheritance and the prototype chain:
+
+```js
+// Constructor function
+function Animal(name) {
+  this.name = name;
+}
+
+// Adding a method to the prototype
+Animal.prototype.sayHello = function () {
+  console.log(`Hello, I'm ${this.name}`);
+};
+
+// Creating instances
+const cat = new Animal("Whiskers");
+const dog = new Animal("Buddy");
+
+// Calling the method
+cat.sayHello(); // Output: Hello, I'm Whiskers
+dog.sayHello(); // Output: Hello, I'm Buddy
+
+// Checking the prototype chain
+console.log(cat.hasOwnProperty("name")); // true
+console.log(cat.hasOwnProperty("sayHello")); // false
+```
+
+In this example, the Animal constructor function has a prototype with the sayHello method. Instances of Animal (like cat and dog) inherit this method through the prototype chain. When you call cat.sayHello(), JavaScript first looks for sayHello in cat itself. Since it's not found, it continues up the prototype chain and finds it on the Animal.prototype.
 
 </p>
 </details>
@@ -528,7 +720,55 @@ arr.forEach(function (val) {
 </p>
 </details>
 
-5.
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
+
+---
+
+###
+
+<details>
+<summary>Answer</summary>
+<p>
+</p>
+</details>
 
 ---
 
