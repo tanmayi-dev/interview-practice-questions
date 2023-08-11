@@ -515,6 +515,16 @@ To avoid props drilling, you can use one of the following techniques:
 
 ## Questions asked in Interviews
 
+#### What is one-way binding and two-way binding?
+
+<details>
+<summary>Answer</summary>
+<p>
+
+</p>
+</details>
+---
+
 <!-- Tag: AT&T
 
 ### There are two components A and B. When you update value of a variable in component A then it should be available in component B for usage. Which react hook will you use for this?
