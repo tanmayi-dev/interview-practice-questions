@@ -40,44 +40,70 @@ async > defer > no attribute
 
 ---
 
-###
+### Difference between let and var keywords
 
 <details>
 <summary>Answer</summary>
 <p>
+
+1. var is global scoped and let is block scoped
+2. var declaration is hoisted and is initialized with undefined value, but let is not initialized undefined value
+3. var variables can be redeclared in its own scope and let variables cannot be redeclared in its scope
 
 </p>
 </details>
 
 ---
 
-###
+### How to delete property-specific values?
 
 <details>
 <summary>Answer</summary>
 <p>
+ The delete keyword is used to delete the whole property and all the values at once like
+```js
+let gfg={Course: "DSA", Duration:30};
+delete gfg.Course;
+```
+</p>
+</details>
+
+---
+
+### What is the output for each of the following?
+
+```javascript
+
+> -1/0
+> 1/0
+> -Infinity - Infinity
+> -Infinity + Infinity
+> Infinity - 1
+```
+
+<details>
+<summary>Answer</summary>
+<p>
+
+```js
+> -1/0  // -Infinity
+> 1/0   // Infinity
+> -Infinity - Infinity  // -Infinity
+> -Infinity + Infinity  // NaN
+> Infinity - 1  // Infinity
+```
 
 </p>
 </details>
 
 ---
 
-###
+### What is negative infinity?
 
 <details>
 <summary>Answer</summary>
 <p>
-
-</p>
-</details>
-
----
-
-###
-
-<details>
-<summary>Answer</summary>
-<p>
+The negative infinity in JavaScript is a constant value that is used to represent the lowest available value. It means that no other number is lesser than this value. It can be generated using a self-made function or by an arithmetic operation. JavaScript shows the NEGATIVE_INFINITY value as -Infinity.
 
 </p>
 </details>
@@ -86,10 +112,7 @@ async > defer > no attribute
 
 ## Questions asked in Interviews
 
-<!-- Add questions from HKirat sing
-Add copy of JS inteview questions - document
-
-### 1. Question
+### Question
 
 ```javascript
 const work = "hello";
@@ -109,7 +132,7 @@ Strings are immutable.
 
 ---
 
-### 2. Question
+### Question
 
 ```javascript
 console.log(a);
@@ -120,15 +143,15 @@ const a = 1;
 <details>
 <summary>Answer</summary>
 <p>
-
+```javascript
+ Uncaught ReferenceError: a is not defined
+```
 </p>
 </details>
 
 ---
 
-### 3. Question
-
-Explain Currying and Hoisting in Javascript.
+### Explain Currying and Hoisting in Javascript.
 
 <details>
 <summary>Answer</summary>
@@ -139,9 +162,7 @@ Explain Currying and Hoisting in Javascript.
 
 ---
 
-### 4. Question
-
-Different between Typescript and Javascript
+### Different between Typescript and Javascript
 
 <details>
 <summary>Answer</summary>
@@ -152,9 +173,7 @@ Different between Typescript and Javascript
 
 ---
 
-### 5. Question
-
-Explain promise chaining in javascript?
+### Explain promise chaining in javascript?
 
 <details>
 <summary>Answer</summary>
@@ -165,9 +184,7 @@ Explain promise chaining in javascript?
 
 ---
 
-### 6. Question
-
-How does javascript figures out that a promise is resolved?
+### How does javascript figures out that a promise is resolved?
 
 <details>
 <summary>Answer</summary>
@@ -178,9 +195,7 @@ How does javascript figures out that a promise is resolved?
 
 ---
 
-### 7. Question
-
-JavaScript Fundamentals and tricky output based questions which indirectly covered topics like closures, hoisting, var scope vs let,const scope, IIFE, callback vs promises vs async await, how to handle dependent promise logic / promise chaining.
+### Implement Function.prototype.bind polyfill
 
 <details>
 <summary>Answer</summary>
@@ -191,9 +206,7 @@ JavaScript Fundamentals and tricky output based questions which indirectly cover
 
 ---
 
-### 8. Question
-
-Implement Function.prototype.bind polyfill
+### Explain Event loop, and how setTimeout and Promises are queued
 
 <details>
 <summary>Answer</summary>
@@ -204,9 +217,7 @@ Implement Function.prototype.bind polyfill
 
 ---
 
-### 9. Question
-
-Event loop, and how setTimeout and Promises are queued
+### Prototypal Inheritance in Javscript and how does prototype chain works?
 
 <details>
 <summary>Answer</summary>
@@ -217,9 +228,7 @@ Event loop, and how setTimeout and Promises are queued
 
 ---
 
-### 10. Question
-
-Prototypal Inheritance in Javscript and how does prototype chain works?
+### What is a reduce function in Javascript. How to write a polyfill of a reduce function? He wanted me to cover all cases while writing a pollyfill of reduce. (check MDN documentation )
 
 <details>
 <summary>Answer</summary>
@@ -230,9 +239,7 @@ Prototypal Inheritance in Javscript and how does prototype chain works?
 
 ---
 
-### 11. Question
-
-What is a reduce function in Javascript. How to write a polyfill of a reduce function? He wanted me to cover all cases while writing a pollyfill of reduce. (check MDN documentation )
+### How does Redux Saga works, what problem it solves and how can we achieve our goals without redux saga?
 
 <details>
 <summary>Answer</summary>
@@ -243,20 +250,7 @@ What is a reduce function in Javascript. How to write a polyfill of a reduce fun
 
 ---
 
-### 12. Question
-
-How does Redux Saga works, what problem it solves and how can we achieve our goals without redux saga?
-
-<details>
-<summary>Answer</summary>
-<p>
-
-</p>
-</details>
-
----
-
-### 13. Question
+### Question
 
 How will you design a calendar? What controls will you make? What events will you attach? How will you render a numbers in calendar for every month?
 
@@ -271,21 +265,7 @@ How will you design a calendar? What controls will you make? What events will yo
 
 ---
 
-### 14. Question
-
-questions on javascript prototypes and some trick questions.
-learn prototypes here
-
-<details>
-<summary>Answer</summary>
-<p>
-
-</p>
-</details>
-
----
-
-### 1. What is the output of the following code? Give reason for the same
+### What is the output of the following code? Give reason for the same
 
 ```javascript
 const work = "hello";
@@ -308,7 +288,7 @@ Strings are immutable.
 
 ---
 
-### 2. Is the code given below valid? If yes, what property of JS does it use?
+### Is the code given below valid? If yes, what property of JS does it use?
 
 ```javascript
 x = 5; // Assign 5 to x
@@ -329,7 +309,7 @@ The given code is valid.     <br/>
 
 ---
 
-### 3. Question
+### Question
 
 ```javascript
 console.log(a);
@@ -353,9 +333,7 @@ Hoisting is not done for these
 
 ---
 
-### 3. Question
-
-Explain Currying and Hoisting in Javascript.
+### Explain Currying and Hoisting in Javascript.
 
 <details>
 <summary>Answer</summary>
@@ -366,9 +344,7 @@ Explain Currying and Hoisting in Javascript.
 
 ---
 
-### 4. Question
-
-Different between Typescript and Javascript
+### Different between Typescript and Javascript
 
 <details>
 <summary>Answer</summary>
@@ -379,7 +355,7 @@ Different between Typescript and Javascript
 
 ---
 
-### 5. Question
+### Question
 
 ```html
 <body>
@@ -401,22 +377,64 @@ What will happen to DOM tree if some issue happens in script tag?
 
 ---
 
-### 6. Question
-
-Explain promise chaining in javascript?
+### Explain promise chaining in javascript?
 
 <details>
 <summary>Answer</summary>
 <p>
+
+Promise chaining is a technique in JavaScript that allows you to chain multiple asynchronous operations together using promises. It provides a clean and sequential way to handle asynchronous tasks and their results. Each promise in the chain represents a step in the sequence of operations.
+
+```javascript
+// Simulate an asynchronous operation that returns a promise
+function fetchUserData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const userData = { id: 1, name: "John" };
+      resolve(userData);
+    }, 1000);
+  });
+}
+
+function fetchUserPosts(userId) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const userPosts = [
+        { id: 101, title: "Post 1" },
+        { id: 102, title: "Post 2" },
+      ];
+      resolve(userPosts);
+    }, 1500);
+  });
+}
+
+// Chaining promises
+fetchUserData()
+  .then((userData) => {
+    console.log("User data:", userData);
+    return fetchUserPosts(userData.id);
+  })
+  .then((userPosts) => {
+    console.log("User posts:", userPosts);
+  })
+  .catch((error) => {
+    console.error("Error:", error);
+  });
+```
+
+Explanation
+
+- fetchUserData simulates an asynchronous operation that returns a user's data as a promise.
+- fetchUserPosts simulates an asynchronous operation that returns a user's posts as a promise, taking a userId parameter.
+- We chain the promises using the .then() method. The first .then() handles the user data, and the second .then() handles the user posts. The return statement in the first .then() returns the promise from fetchUserPosts, allowing it to be chained.
+- The .catch() method is used to handle any errors that may occur during the promise chain.
 
 </p>
 </details>
 
 ---
 
-### 7. Question
-
-How does javascript figures out that a promise is resolved?
+### How does javascript figures out that a promise is resolved?
 
 <details>
 <summary>Answer</summary>
@@ -424,33 +442,48 @@ How does javascript figures out that a promise is resolved?
 
 </p>
 </details>
+---
 
+### What is Debounce and Throttle in js?
+
+<details>
+<summary>Answer</summary>
+<p>
+debounce => Input search minimise api calls => setinterval is usey
+
+Throttle => gracefully handle heavyCBs (scroll-event) => setTimeout is usey
+
+</p>
+</details>
 ---
 
 [DOM related JS questions](https://www.thatjsdude.com/interview/dom.html)
 
 ---
+
 **Hkirat Questions**
 
 1. What is the difference between let, const and var ?
 2. Is the code given below valid? If yes, what property of JS does it use?
+
    ```js
    x = 5; // Assign 5 to x
    elem = document.getElementById("demo"); // Find an element
-   elem.innerHTML = x;                     // Display x in the element
+   elem.innerHTML = x; // Display x in the element
 
    var x; // Declare x
    ```
-<details>
-<summary>Answer</summary>
-<p>
-It is valid and it uses hoisting.
-This snippet won't work for let. (Temporal Dead Zone)
-</p>
-</details>
+
+   <details>
+   <summary>Answer</summary>
+   <p>
+   It is valid and it uses hoisting.
+   This snippet won't work for let. (Temporal Dead Zone)
+   </p>
+   </details>
 
 3. Is this function correct or incorrect
-    ```js
+`js
     const arr = [1,2,3]
     arr.forEach(function(val) {
         if(val%2 === 0) {
@@ -458,7 +491,7 @@ This snippet won't work for let. (Temporal Dead Zone)
         }
     console.log(val);
     })
-    ```
+    `
 <details>
 <summary>Answer</summary>
 <p>
@@ -466,37 +499,40 @@ This function is incorrect because `break` is valid inside a loop.
 But in the above code snippet, it is used inside a function and `break` is not valide inside a function.
 
 Correct way to write it will be :
+
 ```js
-const arr = [1,2,3]
+const arr = [1, 2, 3];
 for (let i = 0; i < arr.length; i++) {
-    if(arr[i] % 2 === 0) {
-        break;
-    }
-console.log(val);
+  if (arr[i] % 2 === 0) {
+    break;
+  }
+  console.log(val);
 }
 ```
+
 OR
+
 ```js
-const arr = [1,2,3];
+const arr = [1, 2, 3];
 let done = false;
-arr.forEach(function(val) {
-    if(val%2 === 0) {
-        done = true;
-    }
-    if(!done) {
+arr.forEach(function (val) {
+  if (val % 2 === 0) {
+    done = true;
+  }
+  if (!done) {
     console.log(val);
-    }
-})
+  }
+});
 ```
 
 </p>
 </details>
 
-
 5.
 
 ---
 
+<!--
 - What is EcmaScript in JavaScript?
 - What is difference between let, const and var?
 - What is spread operator, rest operator, default parameter?
