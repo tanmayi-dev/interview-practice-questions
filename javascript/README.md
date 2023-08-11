@@ -179,41 +179,142 @@ greetPerson2("?"); // Output: Hey, Bob?
 
 ---
 
-###
+### How would you create a private variable in JavaScript?
 
 <details>
 <summary>Answer</summary>
 <p>
+avaScript does not have built-in support for private variables in the same way that some other programming languages do. However, you can achieve a level of data encapsulation and privacy using various techniques. One common approach is to use closures to create private variables within a function scope. Here's how you can do it:
+
+```js
+function createCounter() {
+  let count = 0; // This is a private variable
+
+  return {
+    increment: function () {
+      count++;
+    },
+    decrement: function () {
+      count--;
+    },
+    getCount: function () {
+      return count;
+    },
+  };
+}
+
+const counter = createCounter();
+console.log(counter.getCount()); // Output: 0
+
+counter.increment();
+counter.increment();
+console.log(counter.getCount()); // Output: 2
+
+counter.decrement();
+console.log(counter.getCount()); // Output: 1
+
+console.log(counter.count); // Output: undefined (count is private)
+```
+
+In this example, the createCounter function returns an object with three methods: increment, decrement, and getCount. The count variable is declared using let within the scope of the createCounter function, making it private and inaccessible from outside the function. The returned object's methods have access to the count variable due to JavaScript's closure mechanism, allowing them to modify and access the private variable.
+
+This approach provides a way to encapsulate data and create private variables within a specific scope. Keep in mind that it's not true encapsulation or true privacy, as determined developers could still access the private variable through various means. However, it's a common and widely used technique in JavaScript to achieve a level of data protection and organization
+
 </p>
 </details>
 
 ---
 
-###
+### What is Closure in JavaScript? Provide an example
 
 <details>
 <summary>Answer</summary>
 <p>
+A closure is a fundamental concept in JavaScript that occurs when a function is defined within another function and retains access to the variables and scope of its outer (enclosing) function, even after the outer function has finished executing. In other words, a closure "closes over" its surrounding lexical scope, preserving the state of variables at the time of its creation.
+
+Closures are often used to create data privacy, encapsulation, and to maintain state across multiple function calls.
+
+```js
+// Closure Example - JS
+function outerFunction() {
+  const outerVariable = "I am from outer";
+
+  function innerFunction() {
+    console.log(outerVariable); // innerFunction has access to outerVariable
+  }
+
+  return innerFunction; // Return innerFunction, creating a closure
+}
+
+const myClosure = outerFunction(); // myClosure now holds the innerFunction
+myClosure(); // Output: I am from outer
+```
+
 </p>
 </details>
 
 ---
 
-###
+### What are Generator Function
 
 <details>
 <summary>Answer</summary>
 <p>
+In JavaScript, a function name that starts with an asterisk (*) indicates a generator function. Generator functions are a special type of function that can be paused and resumed during execution, allowing you to generate a sequence of values over time.
+
+Generator functions are defined using the function\* syntax, and they use the yield keyword to produce values one at a time. They are often used for working with asynchronous operations, lazy evaluation, and iteration.
+
+```js
+function* numberGenerator() {
+  let num = 1;
+  while (true) {
+    yield num;
+    num++;
+  }
+}
+
+const generator = numberGenerator();
+
+console.log(generator.next().value); // Output: 1
+console.log(generator.next().value); // Output: 2
+console.log(generator.next().value); // Output: 3
+// ...
+```
+
+In this example, numberGenerator is a generator function that yields an incrementing number each time generator.next() is called. The function can be paused and resumed at each yield statement.
+
+Generator functions are particularly useful when dealing with asynchronous operations, as they allow you to write asynchronous code that looks more like synchronous code, making it easier to manage complex asynchronous workflows.
+
+Note that while generator functions start with an asterisk (\*), the variable names you use for generator instances (like generator in the example) don't need to start with an asterisk. The asterisk is used to define the generator function itself.
+
 </p>
 </details>
 
 ---
 
-###
+### What is Event Loop
 
 <details>
 <summary>Answer</summary>
 <p>
+The event loop is a fundamental concept in JavaScript that plays a crucial role in managing and handling asynchronous operations and events within the JavaScript runtime environment. It is responsible for coordinating the execution of various code blocks, callbacks, and events, allowing non-blocking, efficient, and responsive handling of tasks.
+
+Here's a high-level explanation of how the event loop works:
+
+Call Stack: When a JavaScript program is executed, it starts by adding the main script to the call stack. As functions are called, they are added to the call stack, and their execution starts. The call stack follows a Last-In-First-Out (LIFO) order.
+
+Asynchronous Operations: JavaScript is single-threaded, meaning it processes one task at a time. However, many operations are asynchronous, such as fetching data from a server, reading files, and handling user input.
+
+Web APIs and Callbacks: Asynchronous operations are offloaded to Web APIs provided by the browser or runtime environment. These APIs include setTimeout, fetch, and others. When an asynchronous operation is started, it is moved out of the call stack to the Web API environment. Once the operation is complete, a callback function is pushed to the callback queue.
+
+Callback Queue: The callback queue holds the callback functions that are ready to be executed. These callbacks are enqueued in the order they were completed.
+
+Event Loop: The event loop constantly checks the call stack and the callback queue. If the call stack is empty, the event loop pops the next callback from the queue and pushes it onto the call stack, initiating its execution.
+
+Execution of Callbacks: As callbacks are executed, they may initiate further asynchronous operations. These operations follow the same cycle of being offloaded to Web APIs, and their corresponding callbacks are placed in the callback queue.
+
+The event loop ensures that the JavaScript runtime remains responsive, even when dealing with time-consuming tasks or waiting for external resources. It allows developers to write code that appears synchronous, even though it's executing asynchronously in the background.
+
 </p>
 </details>
 
