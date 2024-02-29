@@ -395,9 +395,63 @@ const a = 1;
 
 <details>
 <summary>Answer</summary>
-<p>
+<div>
+ <div>
+  <b>Currying: </b>Technique in functional programming, that transforms the function of multiple arguments into several functions of a single argument in sequence.
+ </div>
 
-</p>
+```javascript
+function simpleFunction(param1, param2, param3, .....) => function curriedFunction(param1)(param2)(param3)(....
+```
+
+Why use Currying:
+
+1. It helps us to create a higher-order function
+2. It reduces the chances of error in our function by dividing it into multiple smaller functions that can handle one responsibility.
+3. It is very useful in building modular and reusable code
+4. It helps us to avoid passing the same variable multiple times
+5. It makes the code more readable
+
+Example:
+
+```javascript
+function calculateVolume(length) {
+  return function (breadth) {
+    return function (height) {
+      return length * breadth * height;
+    };
+  };
+}
+console.log(calculateVolume(4)(5)(6));
+```
+
+---
+
+**Hoisting:** is a concept that enables us to extract values of variables and functions even before initializing/assigning value without getting errors and this happens during the <u>1st phase (memory creation phase) of the Execution Context.</u>
+
+> Note: JavaScript only hoists declarations, not initializations.
+
+Example:
+
+```javascript
+console.log(foobar());
+function foobar() {
+  return "Hello";
+}
+function foobar() {
+  return "Bellow";
+}
+function foobar() {
+  return "Chime";
+}
+function foobar() {
+  return "Prime";
+}
+
+// Output: Prime
+```
+
+</div>
 </details>
 
 ---
@@ -406,9 +460,7 @@ const a = 1;
 
 <details>
 <summary>Answer</summary>
-<p>
-
-</p>
+<figure class="table"><table><thead><tr><th>Feature</th><th>TypeScript</th><th>JavaScript</th></tr></thead><tbody><tr><td>Typing</td><td>Provides static typing</td><td>Dynamically typed<br>&nbsp;</td></tr><tr><td>Tooling</td><td>Comes with IDEs and code editors&nbsp;</td><td>Limited built-in tooling<br>&nbsp;</td></tr><tr><td>Syntax</td><td>Similar to JavaScript, with additional features&nbsp;</td><td>Standard JavaScript syntax<br>&nbsp;</td></tr><tr><td>Compatibility</td><td>Backward compatible with JavaScript&nbsp;</td><td>Cannot run TypeScript in JavaScript files<br>&nbsp;</td></tr><tr><td>Debugging</td><td>Stronger typing can help identify errors&nbsp;</td><td>May require more debugging and testing<br>&nbsp;</td></tr><tr><td>Learning curve&nbsp;</td><td>Can take time to learn additional features&nbsp;</td><td>Standard JavaScript syntax is familiar<br>&nbsp;</td></tr></tbody></table></figure>
 </details>
 
 ---
@@ -417,9 +469,7 @@ const a = 1;
 
 <details>
 <summary>Answer</summary>
-<p>
-
-</p>
+A simple concept by which we may initialize another promise inside our *Hello*  method and accordingly we may execute our results. The function inside then captures the value returned by the previous promise
 </details>
 
 ---
