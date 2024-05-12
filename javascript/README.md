@@ -460,7 +460,47 @@ function foobar() {
 
 <details>
 <summary>Answer</summary>
-<figure class="table"><table><thead><tr><th>Feature</th><th>TypeScript</th><th>JavaScript</th></tr></thead><tbody><tr><td>Typing</td><td>Provides static typing</td><td>Dynamically typed<br>&nbsp;</td></tr><tr><td>Tooling</td><td>Comes with IDEs and code editors&nbsp;</td><td>Limited built-in tooling<br>&nbsp;</td></tr><tr><td>Syntax</td><td>Similar to JavaScript, with additional features&nbsp;</td><td>Standard JavaScript syntax<br>&nbsp;</td></tr><tr><td>Compatibility</td><td>Backward compatible with JavaScript&nbsp;</td><td>Cannot run TypeScript in JavaScript files<br>&nbsp;</td></tr><tr><td>Debugging</td><td>Stronger typing can help identify errors&nbsp;</td><td>May require more debugging and testing<br>&nbsp;</td></tr><tr><td>Learning curve&nbsp;</td><td>Can take time to learn additional features&nbsp;</td><td>Standard JavaScript syntax is familiar<br>&nbsp;</td></tr></tbody></table></figure>
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>TypeScript</th>
+      <th>JavaScript</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Typing</td>
+      <td>Provides static typing</td>
+      <td>Dynamically typed</td>
+    </tr>
+    <tr>
+      <td>Tooling</td>
+      <td>Comes with IDEs and code editors</td>
+      <td>Limited built-in tooling</td>
+    </tr>
+    <tr>
+      <td>Syntax</td>
+      <td>Similar to JavaScript, with additional features</td>
+      <td>Standard JavaScript syntax</td>
+    </tr>
+    <tr>
+      <td>Compatibility</td>
+      <td>Backward compatible with JavaScript</td>
+      <td>Cannot run TypeScript in JavaScript files</td>
+    </tr>
+    <tr>
+      <td>Debugging</td>
+      <td>Stronger typing can help identify errors</td>
+      <td>May require more debugging and testing</td>
+    </tr>
+    <tr>
+      <td>Learning curve</td>
+      <td>Can take time to learn additional features</td>
+      <td>Standard JavaScript syntax is familiar</td>
+    </tr>
+  </tbody>
+</table>
 </details>
 
 ---
