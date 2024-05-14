@@ -25,8 +25,14 @@
 
 ## DSA <a id="dsa"></a>
 
+
+
 1. What is the difference between **heap memory and stack memory** ? <br><br>
-  Heap memory is dynamically allocated memory used for objects and data structures, managed by the programmer, while stack memory is used for function calls and local variables, managed automatically by the compiler.
+   <details>
+      <summary>Answer</summary>
+      <p>Heap memory is dynamically allocated memory used for objects and data structures, managed by the programmer, while stack memory is used for function calls and local variables, managed automatically by the compiler.</p>
+   </details>
+  
 ---
 
 2. What is a **binary search tree (BST)** and what is its time complexity for search operations? <br><br>
