@@ -35,59 +35,112 @@
   
 ---
 
-2. What is a **binary search tree (BST)** and what is its time complexity for search operations? <br><br>
-  A binary search tree is a binary tree where the left child node contains values less than the parent node, and the right child node contains values greater than the parent node. The time complexity for search operations in a balanced BST is O(log n).
+2. What is a **binary search tree (BST)** and what is its time complexity for search operations?
+   <details>
+      <summary>Answer</summary>
+      <p>A binary search tree is a binary tree where the left child node contains values less than the parent node, and the right child node contains values greater than the parent node. The time complexity for search operations in a balanced BST is O(log n).</p>
+   </details>
+  
 ---
   
-3. What is **dynamic programming** and when is it used? <br><br>
-  Dynamic programming is a technique used to solve problems by breaking them down into simpler subproblems and solving each subproblem only once. It's used when the same subproblems occur multiple times.
+3. What is **dynamic programming** and when is it used?
+     <details>
+         <summary>Answer</summary>
+         <p>Dynamic programming is a technique used to solve problems by breaking them down into simpler subproblems and solving each subproblem only once. It's used when the same subproblems occur multiple times.</p>
+      </details>
+  
 ---
   
-4. What are types of **tree traversals** ? <br><br>
-  Inorder, Preorder, Postorder
+4. What are types of **tree traversals** ?
+     <details>
+         <summary>Answer</summary>
+         <p>Inorder, Preorder, Postorder</p>
+      </details>
+  
 ---
 
-5. Can you construct a BST with only preorder or only postorder traversal ? <br><br>
-  Yes, but the resulting tree **may not be unique**, and there may be multiple valid BSTs depending on the arrangement of elements.
+5. Can you construct a BST with only preorder or only postorder traversal ?
+   <details>
+      <summary>Answer</summary>
+      <p>Yes, but the resulting tree <strong>may not be unique</strong>, and there may be multiple valid BSTs depending on the arrangement of elements.</p>
+   </details>
+  
 ---
 
-6. Can you construct a **unique BST** if preorder and postorder traversals are given ? or What should be given to construct a unique BST ? <br><br>
-  - Preorder + Inorder
-  - Postorder + Inorder
+6. Can you construct a **unique BST** if preorder and postorder traversals are given ? or What should be given to construct a unique BST ?
+   <details>
+      <summary>Answer</summary>
+      <p>
+         <ul>
+            <li>Preorder + Inorder</li>
+            <li>Postorder + Inorder</li>
+         </ul>
+      </p>
+   </details>
 ---
 
 ## Backend <a id="backend"></a>
 
-1. What is an **API** ? <br><br>
-  An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate with each other.
+1. What is an **API** ?
+   <details>
+      <summary>Answer</summary>
+      <p>An API (Application Programming Interface) is a set of rules and protocols that allows different software applications to communicate with each other.</p>
+   </details>
+  
 ---
 
-2. What is **HTTP**? <br><br>
-  HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the World Wide Web, used to transmit hypertext documents (such as HTML) between web servers and clients.
+2. What is **HTTP**?
+   <details>
+      <summary>Answer</summary>
+      <p>HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the World Wide Web, used to transmit hypertext documents (such as HTML) between web servers and clients.</p>
+   </details>
+  
 ---
 
-3. What is a **RESTful** API? <br><br>
-   A RESTful API is an architectural style that uses HTTP requests to perform CRUD (Create, Read, Update, Delete) operations on resources, typically using standard HTTP methods (GET, POST, PUT, DELETE).
+3. What is a **RESTful** API?
+   <details>
+      <summary>Answer</summary>
+      <p>A RESTful API is an architectural style that uses HTTP requests to perform CRUD (Create, Read, Update, Delete) operations on resources, typically using standard HTTP methods (GET, POST, PUT, DELETE).</p>
+   </details>
 
 --- 
 4. What is the difference between **PUT** and **PATCH** methods in RESTful APIs?
-   PUT is used to **update or replace an entire resource**, while PATCH is used to **partially update a resource**, typically sending only the data that has changed.
+   <details>
+      <summary>Answer</summary>
+      <p>PUT is used to <strong>update or replace an entire resource</strong>, while PATCH is used to <strong>partially update a resource</strong>, typically sending only the data that has changed.</p>
+   </details>
+   
 
 ---
 5. What is the purpose of authentication and authorization in backend development?
-   - Authentication verifies the identity of users
-   - Authorization determines what actions they are allowed to perform within an application or system.
+   <details>
+      <summary>Answer</summary>
+      <p>
+         <ul>
+            <li>Authentication verifies the identity of users</li>
+            <li>Authorization determines what actions they are allowed to perform within an application or system.</li>
+         </ul>
+      </p>
+   </details>
 
 ---
 6. Can you name some commonly used **HTTP Status Codes** ?
-   - 200 OK: Indicates that the request has succeeded.
-   - 201 Created: Indicates that the request has been fulfilled and a new resource has been created.
-   - 400 Bad Request: Indicates that the server cannot process the request due to client error.
-   - 401 Unauthorized: Indicates that the request requires user authentication.
-   - 403 Forbidden: Indicates that the server understood the request, but refuses to authorize it.
-   - 404 Not Found: Indicates that the requested resource could not be found on the server.
-   - 500 Internal Server Error: Indicates that the server encountered an unexpected condition that prevented it from fulfilling the request.
-   - 503 Service Unavailable: Indicates that the server is currently unable to handle the request due to temporary overload or maintenance.
+   <details>
+      <summary>Answer</summary>
+      <p>
+         <ul>
+            <li>200 OK: Indicates that the request has succeeded.</li>
+            <li>201 Created: Indicates that the request has been fulfilled and a new resource has been created.</li>
+            <li>400 Bad Request: Indicates that the server cannot process the request due to client error.</li>
+            <li>401 Unauthorized: Indicates that the request requires user authentication.</li>
+            <li>403 Forbidden: Indicates that the server understood the request, but refuses to authorize it.</li>
+            <li>404 Not Found: Indicates that the requested resource could not be found on the server.</li>
+            <li>500 Internal Server Error: Indicates that the server encountered an unexpected condition that prevented it from fulfilling the request.</li>
+            <li>503 Service Unavailable: Indicates that the server is currently unable to handle the request due to temporary overload or maintenance.</li>
+         </ul>
+      </p>
+   </details>
+   
 
 ---
 
