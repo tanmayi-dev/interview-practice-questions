@@ -1,5 +1,6 @@
 ## Index
 
+- [More Challenging Questions](./more-questions.md)
 - [General](#general)
 - [DSA](#dsa)
 - [Backend](#backend)
