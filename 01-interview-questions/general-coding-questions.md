@@ -36,6 +36,9 @@
   - [1. Implement Queue using Arrays](#q1)
   - [2. Implement Queue using Linked Lists](#q2)
   - [3. Implement Circular Queue](#q3)
+- [Graphs](#graphs)
+  - [1. Depth First Search](#g1)
+  - [2. Breadth First Search](#g2)
 
 
 ## Arrays <a id="arrays"></a>
@@ -509,9 +512,163 @@ public class Main {
 ### Implement a Queue using Arrays <a id="q1"></a>
 
 - Question :  Implement a queue data structure using arrays and support operations like enqueue and dequeue.
-- Time Complexity : O(1) for enqueue and dequeue operations.
+- Time Complexity :
+  - Bounded Queue (fixed size array) : O(1) for enqueue and O(n) for dequeue (as elements need to be shifted)
+  - Unbounded Queue (dynamix resizing array) :  O(1) amortized for enqueue and O(1) dequeue operations.
 - Space Complexity: O(n) where n is the maximum capacity of the queue.
 
+<details>
+<summary>Bounded Queue</summary>
+<p>
+
+```java
+public class BoundedQueue {
+    private int[] queue;
+    private int front; // index of the front element
+    private int rear; // index of the rear element
+    private int capacity; // maximum capacity of the queue
+    private int size; // current size of the queue
+
+    public BoundedQueue(int capacity) {
+        this.capacity = capacity;
+        this.queue = new int[capacity];
+        this.front = 0;
+        this.rear = -1; // no elements initially
+        this.size = 0;
+    }
+
+    // Enqueue operation
+    public void enqueue(int item) {
+        if (isFull()) {
+            System.out.println("Queue is full. Cannot enqueue.");
+            return;
+        }
+        rear = (rear + 1) % capacity; // Circular increment
+        queue[rear] = item;
+        size++;
+    }
+
+    // Dequeue operation
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot dequeue.");
+            return -1;
+        }
+        int item = queue[front];
+        front = (front + 1) % capacity; // Circular increment
+        size--;
+        return item;
+    }
+
+    // Check if the queue is full
+    public boolean isFull() {
+        return size == capacity;
+    }
+
+    // Check if the queue is empty
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    // Get the front item without removing it
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot peek.");
+            return -1;
+        }
+        return queue[front];
+    }
+}
+
+```
+</p>
+</details>
+
+<details>
+<summary>Unbounded Queue</summary>
+<p>
+
+```java
+public class UnboundedQueue {
+    private int[] queue;
+    private int front; // index of the front element
+    private int rear; // index of the rear element
+    private int capacity; // current capacity of the queue
+    private int size; // current size of the queue
+
+    public UnboundedQueue(int initialCapacity) {
+        this.capacity = initialCapacity;
+        this.queue = new int[initialCapacity];
+        this.front = 0;
+        this.rear = -1; // no elements initially
+        this.size = 0;
+    }
+
+    // Enqueue operation
+    public void enqueue(int item) {
+        if (isFull()) {
+            resize();
+        }
+        rear++;
+        if (rear == capacity) {
+            rear = 0; // Circular increment
+        }
+        queue[rear] = item;
+        size++;
+    }
+
+    // Dequeue operation
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot dequeue.");
+            return -1;
+        }
+        int item = queue[front];
+        front++;
+        if (front == capacity) {
+            front = 0; // Circular increment
+        }
+        size--;
+        return item;
+    }
+
+    // Check if the queue is full
+    private boolean isFull() {
+        return size == capacity;
+    }
+
+    // Check if the queue is empty
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    // Get the front item without removing it
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot peek.");
+            return -1;
+        }
+        return queue[front];
+    }
+
+    // Resize the array when full
+    private void resize() {
+        int newCapacity = capacity * 2; // Double the capacity
+        int[] newQueue = new int[newCapacity];
+        int i = 0;
+        while (!isEmpty()) {
+            newQueue[i++] = dequeue(); // Re-queue all elements to the new array
+        }
+        queue = newQueue;
+        front = 0;
+        rear = size - 1;
+        capacity = newCapacity;
+    }
+}
+
+```
+</p>
+</details>
 
 ### Implement a Queue using Linked Lists <a id="q2"></a>
 
@@ -519,8 +676,280 @@ public class Main {
 - Time Complexity: O(1) for enqueue and dequeue operations.
 - Space Complexity: O(n) where n is the number of elements in the queue.
 
+<details>
+<summary>code</summary>
+<p>
+
+```java
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class Queue {
+    private Node front;
+    private Node rear;
+
+    public Queue() {
+        this.front = null;
+        this.rear = null;
+    }
+
+    // Enqueue operation
+    public void enqueue(int data) {
+        Node newNode = new Node(data);
+        if (isEmpty()) {
+            front = rear = newNode;
+        } else {
+            rear.next = newNode;
+            rear = newNode;
+        }
+    }
+
+    // Dequeue operation
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot dequeue.");
+            return -1;
+        }
+        int data = front.data;
+        if (front == rear) {
+            front = rear = null;
+        } else {
+            front = front.next;
+        }
+        return data;
+    }
+
+    // Check if the queue is empty
+    public boolean isEmpty() {
+        return front == null;
+    }
+
+    // Get the front item without removing it
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot peek.");
+            return -1;
+        }
+        return front.data;
+    }
+}
+
+```
+</p>
+</details>
+
 ### Implement a Circular Queue <a id="q3"></a>
 
 - Question: Implement a circular queue data structure using arrays and support operations like enqueue and dequeue.
 - Time Complexity: O(1) for enqueue and dequeue operations.
 - Space Complexity: O(n) where n is the maximum capacity of the circular queue.
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class CircularQueue {
+    private int[] queue;
+    private int front; // index of the front element
+    private int rear; // index of the rear element
+    private int size; // current size of the queue
+    private int capacity; // maximum capacity of the queue
+
+    public CircularQueue(int capacity) {
+        this.capacity = capacity;
+        this.queue = new int[capacity];
+        this.front = 0;
+        this.rear = -1; // no elements initially
+        this.size = 0;
+    }
+
+    // Enqueue operation
+    public void enqueue(int item) {
+        if (isFull()) {
+            System.out.println("Queue is full. Cannot enqueue.");
+            return;
+        }
+        rear = (rear + 1) % capacity; // Circular increment
+        queue[rear] = item;
+        size++;
+    }
+
+    // Dequeue operation
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot dequeue.");
+            return -1;
+        }
+        int item = queue[front];
+        front = (front + 1) % capacity; // Circular increment
+        size--;
+        return item;
+    }
+
+    // Check if the queue is full
+    public boolean isFull() {
+        return size == capacity;
+    }
+
+    // Check if the queue is empty
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    // Get the front item without removing it
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty. Cannot peek.");
+            return -1;
+        }
+        return queue[front];
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+
+## Graphs <a id="graphs"></a>
+
+### Implement Depth First Search (DFS) <a id="g1"></a>
+
+- Question: Implement the depth-first search (DFS) algorithm for a graph.
+- Time Complexity: O(V + E) where V is the number of vertices and E is the number of edges.
+- Space Complexity: O(V) for the recursion stack.
+
+<details>
+<summary>Dfs code</summary>
+<p>
+
+```java
+import java.util.*;
+
+public class DFS {
+    private static class Graph {
+        private int vertices;
+        private LinkedList<Integer>[] adjList;
+
+        Graph(int vertices) {
+            this.vertices = vertices;
+            adjList = new LinkedList[vertices];
+            for (int i = 0; i < vertices; i++) {
+                adjList[i] = new LinkedList<>();
+            }
+        }
+
+        void addEdge(int src, int dest) {
+            adjList[src].add(dest);
+        }
+
+        void DFS(int vertex) {
+            boolean[] visited = new boolean[vertices];
+            DFSUtil(vertex, visited);
+        }
+
+        void DFSUtil(int vertex, boolean[] visited) {
+            visited[vertex] = true;
+            System.out.print(vertex + " ");
+            for (int adj : adjList[vertex]) {
+                if (!visited[adj]) {
+                    DFSUtil(adj, visited);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Graph graph = new Graph(4);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 3);
+
+        graph.DFS(2); // Output: 2 0 1 3
+    }
+}
+
+```
+</p>
+</details>
+
+### Implement Breadth First Search (BFS) <a id="g2"></a>
+
+- Question: Implement the breadth-first search (BFS) algorithm for a graph.
+- Time Complexity: O(V + E) where V is the number of vertices and E is the number of edges.
+- Space Complexity: O(V) for the queue.
+
+<details>
+<summary>Bfs code</summary>
+<p>
+
+```java
+import java.util.*;
+
+public class BFS {
+    private static class Graph {
+        private int vertices;
+        private LinkedList<Integer>[] adjList;
+
+        Graph(int vertices) {
+            this.vertices = vertices;
+            adjList = new LinkedList[vertices];
+            for (int i = 0; i < vertices; i++) {
+                adjList[i] = new LinkedList<>();
+            }
+        }
+
+        void addEdge(int src, int dest) {
+            adjList[src].add(dest);
+        }
+
+        void BFS(int startVertex) {
+            boolean[] visited = new boolean[vertices];
+            LinkedList<Integer> queue = new LinkedList<>();
+
+            visited[startVertex] = true;
+            queue.add(startVertex);
+
+            while (queue.size() != 0) {
+                startVertex = queue.poll();
+                System.out.print(startVertex + " ");
+
+                for (int adj : adjList[startVertex]) {
+                    if (!visited[adj]) {
+                        visited[adj] = true;
+                        queue.add(adj);
+                    }
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Graph graph = new Graph(4);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+        graph.addEdge(2, 3);
+        graph.addEdge(3, 3);
+
+        graph.BFS(2); // Output: 2 0 3 1
+    }
+}
+
+```
+</p>
+</details>
