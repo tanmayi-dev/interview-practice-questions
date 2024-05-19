@@ -16,7 +16,55 @@
 
 ## Arrays and Strings <a id="arrays"></a>
 
-### 1. Find the missing number in an array of integers
+### 1. Find the missing number in an array of integers - [gfg](https://www.geeksforgeeks.org/find-the-missing-number/), [tuf](https://takeuforward.org/arrays/find-the-missing-number-in-an-array/)
+<details>
+<summary>Answer</summary>
+<p>
+
+1. Linear Search - O(N^2)
+2. Hashing - O(2*N)
+3. Summation Approach - O(N)
+4. XOR Approach - O(N)
+
+```java
+
+// XOR Implementation
+
+import java.util.*;
+
+public class tUf {
+    public static int missingNumber(int []a, int N) {
+
+        int xor1 = 0, xor2 = 0;
+
+        for (int i = 0; i < N - 1; i++) {
+            xor2 = xor2 ^ a[i]; // XOR of array elements
+            xor1 = xor1 ^ (i + 1); //XOR up to [1...N-1]
+        }
+        xor1 = xor1 ^ N; //XOR up to [1...N]
+
+        return (xor1 ^ xor2); // the missing number
+    }
+
+    public static void main(String args[]) {
+        int N = 5;
+        int a[] = {1, 2, 4, 5};
+
+        int ans = missingNumber(a, N);
+        System.out.println("The missing number is: " + ans);
+    }
+}
+
+
+
+```
+
+</p>
+</details>
+
+---
+
+### 2. Implement an algorithm to rotate an array - [gfg](https://www.geeksforgeeks.org/array-rotation/)
 <details>
 <summary>Answer</summary>
 <p>
@@ -28,22 +76,32 @@
 
 ---
 
-### 2. Implement an algorithm to rotate an array
+### 3. Check if a string is a palindrome [leetcode](https://leetcode.com/problems/valid-palindrome/description/)
 <details>
 <summary>Answer</summary>
 <p>
 
+```java
+class Solution {
+  public boolean isPalindrome(String s) {
+    int l = 0;
+    int r = s.length() - 1;
 
+    while (l < r) {
+      while (l < r && !Character.isLetterOrDigit(s.charAt(l)))
+        ++l;
+      while (l < r && !Character.isLetterOrDigit(s.charAt(r)))
+        --r;
+      if (Character.toLowerCase(s.charAt(l)) != Character.toLowerCase(s.charAt(r)))
+        return false;
+      ++l;
+      --r;
+    }
 
-</p>
-</details>
-
----
-
-### 3. Check if a string is a palindrome
-<details>
-<summary>Answer</summary>
-<p>
+    return true;
+  }
+}
+```
 
 </p>
 </details>
