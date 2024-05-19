@@ -564,8 +564,10 @@ public class BinarySearch {
 </details>
 
 
-### 2. Find the first occurrence of a Target value in a Sorted Array <a id="b2"></a> [gfg](https://www.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/1)
+### 2. Find the first occurrence of a Target value in a Sorted Array <a id="b2"></a> 
 
+- [gfg](https://www.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/1)
+- [gfg solution](https://www.geeksforgeeks.org/find-first-and-last-positions-of-an-element-in-a-sorted-array/)
 - Question: Given a sorted array, find the first occurrence of a target value.
 - Time Complexity: O(log n) (logarithmic time complexity).
 - Space Complexity: O(1) (constant space complexity).
@@ -613,7 +615,9 @@ public class FirstOccurrenceBinarySearch {
 </p>
 </details>
 
-### 3. Find the Last Occurrence of a Target Value in a Sorted Array <a id="b3"></a> [gfg](https://www.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/1)
+### 3. Find the Last Occurrence of a Target Value in a Sorted Array <a id="b3"></a> 
+
+- [gfg](https://www.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/1)
 
 ```
 Input : arr[] = {1, 3, 5, 5, 5, 5, 67, 123, 125}, x = 5
@@ -662,7 +666,9 @@ public class LastOccurrenceBinarySearch {
 </p>
 </details>
 
-### 4. Find the Peak Element in an Array <a id="b4"></a> [lc](https://leetcode.com/problems/find-peak-element/description/), [gfg](https://www.geeksforgeeks.org/problems/peak-element/1)
+### 4. Find the Peak Element in an Array <a id="b4"></a> 
+
+- [leetcode](https://leetcode.com/problems/find-peak-element/description/), [gfg](https://www.geeksforgeeks.org/problems/peak-element/1)
 
 - Question: Find a peak element in an array where an element is a peak if it is greater than its neighbors.
 - Time Complexity: O(log n) (logarithmic time complexity).
@@ -801,8 +807,12 @@ public class LinkedList {
 }
 
 ```
+</p>
+</details>
 
-### 2. Reverse a linked list: <a id="l2"></a> [gfg](https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1), [lc](https://leetcode.com/problems/reverse-linked-list/)
+### 2. Reverse a linked list: <a id="l2"></a> 
+
+- [gfg](https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1), [lc](https://leetcode.com/problems/reverse-linked-list/)
 
 - Question: Implement a function to reverse a singly linked list.
 - Time Complexity: O(n) (linear time complexity).
@@ -879,6 +889,8 @@ public class ReverseLinkedList {
 ---
 ### 3. Detect a cycle in a linked list: <a id="l3"></a>
 
+- [gfg](https://www.geeksforgeeks.org/detect-loop-in-a-linked-list/)
+- [leetcode](https://leetcode.com/problems/linked-list-cycle/description/)
 - Question: Write a function to detect if a linked list contains a cycle.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
@@ -1207,6 +1219,8 @@ public class BinarySearchTree {
 
 ### 2. Binary Search Tree (BST) validation: <a id="t2"></a>
 
+- [gfg](https://www.geeksforgeeks.org/a-program-to-check-if-a-binary-tree-is-bst-or-not/)
+- [leetcode](https://leetcode.com/problems/validate-binary-search-tree/)
 - Question: Write a function to determine if a binary tree is a valid binary search tree.
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
 - Space Complexity: O(h) where h is the height of the tree (space complexity due to recursion).
@@ -1270,6 +1284,10 @@ public class ValidateBinarySearchTree {
 
 ---
 ### 3. Inorder Traversal of a Binary Tree: <a id="t3"></a>
+
+- [tree traversals](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/)
+- [gfg](https://www.geeksforgeeks.org/inorder-traversal-of-binary-tree/)
+- [leetcode](https://leetcode.com/problems/binary-tree-inorder-traversal/description/)
 
 - Question: Implement an inorder traversal of a binary tree (recursive or iterative).
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
@@ -1372,6 +1390,8 @@ public class InorderTraversal {
 ---
 ### 4. Lowest Common Ancestor in a Binary Tree: <a id="t4"></a>
 
+- [gfg](https://geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/)
+- [leetcode](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
 - Question: Given a binary tree, find the lowest common ancestor of two given nodes in the tree.
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
 - Space Complexity: O(h) where h is the height of the tree (space complexity due to recursion).
@@ -1451,6 +1471,7 @@ public class LowestCommonAncestor {
 - Space Complexity: O(1) (constant space complexity).
 
 - [Gfg article](https://www.geeksforgeeks.org/reverse-a-string-in-java/), [String vs StringBuffer vs String Builder](https://www.geeksforgeeks.org/string-vs-stringbuilder-vs-stringbuffer-in-java/)
+- [leetcode](https://leetcode.com/problems/reverse-string/description/)
 
 - Objects of String are immutable.
 - String class in Java does not have reverse() method, however, the StringBuilder class has built-in reverse() method.
@@ -1549,6 +1570,8 @@ public class ReverseString {
 
 ### 2. Reverse Each Word in a String: <a id="sm2"></a>
 
+- [gfg](https://www.geeksforgeeks.org/reverse-individual-words/)
+- [leetcode](https://leetcode.com/problems/reverse-words-in-a-string-iii/description/)
 - Question: Given a string, reverse each word in the string while maintaining the order of words.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(n) (where n is the length of the string).
@@ -1656,6 +1679,11 @@ public class ReverseWordsInString {
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity) for XOR and O(n) using HashSet.
 
+```
+nums = {4, 1, 2, 1, 2}
+result = 4
+```
+
 <details>
 <summary>using XOR</summary>
 <p>
@@ -1716,6 +1744,12 @@ public class SingleNumber {
 - Question: Given two strings, determine if they are anagrams of each other (contain the same characters with the same frequencies).
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity) assuming constant character set (e.g., ASCII).
+
+```
+s1 = "listen"
+s2 = "silent";
+result : true
+```
 
 <details>
 <summary>using array</summary>
@@ -1809,6 +1843,14 @@ public class Anagram {
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
+```
+str = "racecar";
+result = true
+
+str = "hello";
+result = false
+```
+
 <details>
 <summary>code</summary>
 <p>
@@ -1851,6 +1893,11 @@ public class Palindrome {
 - Question: Determine if a given string is a palindrome after ignoring non-alphanumeric characters and considering case insensitivity.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
+
+```
+String str1 = "A man, a plan, a canal, Panama";
+        String str2 = "race a car";
+```
 
 <details>
 <summary>code</summary>
