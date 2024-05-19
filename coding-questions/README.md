@@ -440,6 +440,32 @@
 
 ---
 
+### 7. Invert a Binary Tree
+<details>
+<summary>Answer</summary>
+<p>
+
+
+
+</p>
+</details>
+
+
+---
+
+### 8. Write algorithm to find if Binary Tree is a Binary Search Tree
+<details>
+<summary>Answer</summary>
+<p>
+
+
+
+</p>
+</details>
+
+
+---
+
 ## Dynamic Programming
 
 ### 1. Find the longest common subsequence
