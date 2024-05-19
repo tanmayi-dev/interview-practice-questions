@@ -564,11 +564,19 @@ public class BinarySearch {
 </details>
 
 
-### 2. Find the first occurrence of a Target value in a Sorted Array <a id="b2"></a>
+### 2. Find the first occurrence of a Target value in a Sorted Array <a id="b2"></a> [gfg](https://www.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/1)
 
 - Question: Given a sorted array, find the first occurrence of a target value.
 - Time Complexity: O(log n) (logarithmic time complexity).
 - Space Complexity: O(1) (constant space complexity).
+
+```
+Input : arr[] = {1, 3, 5, 5, 5, 5, 67, 123, 125}, x = 5
+Output : First Occurrence = 2
+
+Input : arr[] = {1, 3, 5, 5, 5, 5, 7, 123, 125 }, x = 7
+Output : First Occurrence = 6
+```
 
 <details>
 <summary>code</summary>
@@ -605,7 +613,15 @@ public class FirstOccurrenceBinarySearch {
 </p>
 </details>
 
-### 3. Find the Last Occurrence of a Target Value in a Sorted Array <a id="b3"></a>
+### 3. Find the Last Occurrence of a Target Value in a Sorted Array <a id="b3"></a> [gfg](https://www.geeksforgeeks.org/problems/find-first-and-last-occurrence-of-x0849/1)
+
+```
+Input : arr[] = {1, 3, 5, 5, 5, 5, 67, 123, 125}, x = 5
+Output : Last Occurrence = 5
+
+Input : arr[] = {1, 3, 5, 5, 5, 5, 7, 123, 125 }, x = 7
+Output : Last Occurrence = 6
+```
 
 - Question: Given a sorted array, find the last occurrence of a target value.
 - Time Complexity: O(log n) (logarithmic time complexity).
@@ -646,11 +662,17 @@ public class LastOccurrenceBinarySearch {
 </p>
 </details>
 
-### 4. Find the Peak Element in an Array <a id="b4"></a>
+### 4. Find the Peak Element in an Array <a id="b4"></a> [lc](https://leetcode.com/problems/find-peak-element/description/), [gfg](https://www.geeksforgeeks.org/problems/peak-element/1)
 
 - Question: Find a peak element in an array where an element is a peak if it is greater than its neighbors.
 - Time Complexity: O(log n) (logarithmic time complexity).
 - Space Complexity: O(1) (constant space complexity).
+
+```
+Input: nums = [1,2,3,1]
+Output: 2
+Explanation: 3 is a peak element and your function should return the index number 2.
+```
 
 <details>
 <summary>code</summary>
@@ -780,7 +802,7 @@ public class LinkedList {
 
 ```
 
-### 2. Reverse a linked list: <a id="l2"></a>
+### 2. Reverse a linked list: <a id="l2"></a> [gfg](https://www.geeksforgeeks.org/problems/reverse-a-linked-list/1), [lc](https://leetcode.com/problems/reverse-linked-list/)
 
 - Question: Implement a function to reverse a singly linked list.
 - Time Complexity: O(n) (linear time complexity).
@@ -860,6 +882,16 @@ public class ReverseLinkedList {
 - Question: Write a function to detect if a linked list contains a cycle.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
+
+```
+Input:
+N = 3
+value[] = {1,3,4}
+x(position at which tail is connected) = 2
+Output: True
+Explanation: In above test case N = 3. The linked list with nodes N = 3 is given. Then value of x=2 is given which means last node is connected with xth
+node of linked list. Therefore, there exists a loop.
+```
 
 <details>
 <summary>Floyd's Tortoise and Hare</summary>
