@@ -43,7 +43,7 @@
 
 ## Arrays <a id="arrays"></a>
 
-### Sort an array: <a id="a1"></a>
+### 1. Sort an array: <a id="a1"></a>
 
 - Question: Implement a function to sort an array of integers.
 - Time Complexity: O(n log n) (for efficient sorting algorithms like quicksort or mergesort).
@@ -265,9 +265,9 @@ public class QuickSort {
 </p>
 </details>
 
+---
 
-
-### Sort an array of 0s and 1s: <a id="a2"></a>
+### 2. Sort an array of 0s and 1s: <a id="a2"></a>
 
 - Question: Given an array containing only 0s and 1s, rearrange the array so that all 0s come before 1s.
 - Time Complexity: O(n) (linear time complexity).
@@ -350,7 +350,8 @@ public class Main {
 </p>
 </details>
 
-### Sort an array of 0s, 1s, and 2s (Dutch National Flag Problem): <a id="a3"></a>
+--- 
+### 3. Sort an array of 0s, 1s, and 2s (Dutch National Flag Problem): <a id="a3"></a>
 
 - Question: Given an array containing only 0s, 1s, and 2s, sort the array in linear time without using any sorting algorithm.
 - Time Complexity: O(n) (linear time complexity).
@@ -360,19 +361,21 @@ public class Main {
 ---
 ## Linked Lists <a id="linkedlists"></a>
 
-### Reverse a linked list: <a id="l1"></a>
+### 1. Reverse a linked list: <a id="l1"></a>
 
 - Question: Implement a function to reverse a singly linked list.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
-### Detect a cycle in a linked list: <a id="l2"></a>
+---
+### 2. Detect a cycle in a linked list: <a id="l2"></a>
 
 - Question: Write a function to detect if a linked list contains a cycle.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
-### Merge two sorted linked lists: <a id="l3"></a>
+--- 
+### 3. Merge two sorted linked lists: <a id="l3"></a>
 
 - Question: Given two sorted linked lists, merge them into a single sorted linked list.
 - Time Complexity: O(n + m) where n and m are the lengths of the two linked lists.
@@ -381,19 +384,21 @@ public class Main {
 ---
 ## Trees <a id="trees"></a>
 
-### Binary Search Tree (BST) validation: <a id="t1"></a>
+### 1. Binary Search Tree (BST) validation: <a id="t1"></a>
 
 - Question: Write a function to determine if a binary tree is a valid binary search tree.
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
 - Space Complexity: O(h) where h is the height of the tree (space complexity due to recursion).
 
-### Inorder Traversal of a Binary Tree: <a id="t2"></a>
+---
+### 2. Inorder Traversal of a Binary Tree: <a id="t2"></a>
 
 - Question: Implement an inorder traversal of a binary tree (recursive or iterative).
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
 - Space Complexity: O(h) where h is the height of the tree (space complexity due to recursion or stack space in the iterative approach).
 
-### Lowest Common Ancestor in a Binary Tree: <a id="t3"></a>
+---
+### 3. Lowest Common Ancestor in a Binary Tree: <a id="t3"></a>
 
 - Question: Given a binary tree, find the lowest common ancestor of two given nodes in the tree.
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
@@ -402,114 +407,892 @@ public class Main {
 ---
 ## String Manipulation <a id="stringm"></a>
 
-### Reverse a String: <a id="sm1"></a>
+### 1. Reverse a String: <a id="sm1"></a>
 
 - Question: Implement a function to reverse a given string.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
-### Reverse Each Word in a String: <a id="sm2"></a>
+- [Gfg article](https://www.geeksforgeeks.org/reverse-a-string-in-java/), [String vs StringBuffer vs String Builder](https://www.geeksforgeeks.org/string-vs-stringbuilder-vs-stringbuffer-in-java/)
+
+- Objects of String are immutable.
+- String class in Java does not have reverse() method, however, the StringBuilder class has built-in reverse() method.
+- StringBuilder class do not have toCharArray() method, while String class does have toCharArray() method.
+
+```
+Input : Hello, World!
+Output : !dlroW ,olleH
+```
+
+<details>
+<summary>Brute Force with <code>String</code></summary>
+<p>
+
+```java
+public class ReverseString {
+
+    public static String reverseStringBruteForce(String s) {
+        String reversed = "";
+        for (int i = s.length() - 1; i >= 0; i--) {
+            reversed += s.charAt(i);
+        }
+        return reversed;
+    }
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        System.out.println("Original String: " + inputString);
+        System.out.println("Reversed String (Brute Force): " + reverseStringBruteForce(inputString));
+    }
+}
+```
+</p>
+</details>
+
+<details>
+<summary>Two pointer - swap characters</summary>
+<p>
+
+```java
+public class ReverseString {
+
+    public static String reverseStringEfficient(String s) {
+        char[] charArray = s.toCharArray();
+        int left = 0;
+        int right = charArray.length - 1;
+        while (left < right) {
+            char temp = charArray[left];
+            charArray[left] = charArray[right];
+            charArray[right] = temp;
+            left++;
+            right--;
+        }
+        return new String(charArray);
+    }
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        System.out.println("Original String: " + inputString);
+        System.out.println("Reversed String (Efficient): " + reverseStringEfficient(inputString));
+    }
+}
+
+```
+</p>
+</details>
+
+<details>
+<summary>using String Builder</summary>
+<p>
+
+```java
+public class ReverseString {
+
+    public static String reverseStringBruteForce(String s) {
+        StringBuilder reversed = new StringBuilder();
+        for (int i = s.length() - 1; i >= 0; i--) {
+            reversed.append(s.charAt(i));
+        }
+        return reversed.toString();
+    }
+
+    public static void main(String[] args) {
+        String inputString = "Hello, World!";
+        System.out.println("Original String: " + inputString);
+        System.out.println("Reversed String (Brute Force): " + reverseStringBruteForce(inputString));
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+
+### 2. Reverse Each Word in a String: <a id="sm2"></a>
 
 - Question: Given a string, reverse each word in the string while maintaining the order of words.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(n) (where n is the length of the string).
+```
+Input: s = "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+```
 
-### Reverse Words in a String Without Reversing Each Word: <a id="sm3"></a>
+<details>
+<summary>using reverseString (2 pointer) and string nuilder</summary>
+<p>
+
+```java
+public class ReverseWords {
+    public static String reverseString(String s) {
+        char[] charArray = s.toCharArray();
+        int left = 0;
+        int right = charArray.length - 1;
+        while (left < right) {
+            char temp = charArray[left];
+            charArray[left] = charArray[right];
+            charArray[right] = temp;
+            left++;
+            right--;
+        }
+        return new String(charArray);
+    }
+
+    public static String reverseWords(String s) {
+        String[] words = s.split(" "); // Split the string into words
+        StringBuilder reversedString = new StringBuilder();
+        for (String word : words) {
+            // Reverse each word and append to the result string
+            reversedString.append(reverseString(word)).append(" ");
+        }
+        return reversedString.toString().trim(); // Trim trailing space and return
+    }
+
+    public static void main(String[] args) {
+        String s = "Let's take LeetCode contest";
+        System.out.println("Original string: " + s);
+        System.out.println("Reversed string: " + reverseWords(s)); // Output: "s'teL ekat edoCteeL tsetnoc"
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+### 3. Reverse Words in a String Without Reversing Each Word: <a id="sm3"></a>
 
 - Question: Reverse the order of words in a string without reversing each word individually.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(n) (where n is the length of the string).
 
+```
+Input: s = "the sky is blue"
+Output: "blue is sky the"
+```
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class ReverseWordsInString {
+    public static String reverseWords(String s) {
+        StringBuilder reversedString = new StringBuilder();
+        int end = s.length();
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            if (s.charAt(i) == ' ') {
+                // Found a space, append the word
+                reversedString.append(s.substring(i + 1, end)).append(" ");
+                // Move the end pointer to the beginning of the current word
+                end = i;
+            }
+        }
+
+        // Append the first word
+        reversedString.append(s.substring(0, end));
+
+        return reversedString.toString();
+    }
+
+    public static void main(String[] args) {
+        String s = "the sky is blue";
+        System.out.println("Input: " + s);
+        System.out.println("Output: " + reverseWords(s));
+    }
+}
+
+```
+</p>
+</details>
+
 ---
 ## Array Manipulation <a id="arraysm"></a>
 
-### Find Duplicates in an Array: <a id="am1"></a>
+### 1. Find Duplicates in an Array: <a id="am1"></a>
 
 - Question: Given an array of integers where each integer appears twice except for one, find the element that appears only once.
 - Time Complexity: O(n) (linear time complexity).
-- Space Complexity: O(1) (constant space complexity).
+- Space Complexity: O(1) (constant space complexity) for XOR and O(n) using HashSet.
 
-### Anagram Question: <a id="am2"></a>
+<details>
+<summary>using XOR</summary>
+<p>
+
+```java
+public class SingleNumber {
+    public static int findSingleNumber(int[] nums) {
+        int result = 0;
+        for (int num : nums) {
+            result ^= num; // XOR operation cancels out duplicate occurrences, leaving only the single number
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {4, 1, 2, 1, 2};
+        System.out.println("The single number is: " + findSingleNumber(nums)); // Output: 4
+    }
+}
+
+```
+</p>
+</details>
+
+<details>
+<summary>using HashSet</summary>
+<p>
+  
+```java
+import java.util.HashSet;
+
+public class SingleNumber {
+    public static int findSingleNumber(int[] nums) {
+        HashSet<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (!set.add(num)) {
+                // If the number is already present, remove it
+                set.remove(num);
+            }
+        }
+        // After iterating through the array, the set should contain only the single number
+        return set.iterator().next();
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {4, 1, 2, 1, 2};
+        System.out.println("The single number is: " + findSingleNumber(nums)); // Output: 4
+    }
+}
+
+```
+</p>
+</details>
+
+---
+### 2. Anagram Question: <a id="am2"></a>
 
 - Question: Given two strings, determine if they are anagrams of each other (contain the same characters with the same frequencies).
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity) assuming constant character set (e.g., ASCII).
 
+<details>
+<summary>using array</summary>
+<p>
+
+```java
+public class Anagram {
+    public static boolean areAnagrams(String s1, String s2) {
+        if (s1 == null || s2 == null || s1.length() != s2.length()) {
+            return false; // If either string is null or their lengths are different, they cannot be anagrams
+        }
+        int[] charCount = new int[256]; // Assuming ASCII character set
+        for (char c : s1.toCharArray()) {
+            charCount[c]++;
+        }
+        for (char c : s2.toCharArray()) {
+            if (charCount[c] == 0) {
+                return false; // If character frequency in s2 is higher than in s1, they cannot be anagrams
+            }
+            charCount[c]--;
+        }
+        return true; // If all character frequencies match, they are anagrams
+    }
+
+    public static void main(String[] args) {
+        String s1 = "listen";
+        String s2 = "silent";
+        
+        System.out.println("Are \"" + s1 + "\" and \"" + s2 + "\" anagrams? " + areAnagrams(s1, s2)); // true
+    }
+}
+
+```
+
+</p>
+</details>
+
+<details>
+<summary>using hashmap</summary>
+<p>
+
+```java
+import java.util.HashMap;
+
+public class Anagram {
+    public static boolean areAnagrams(String s1, String s2) {
+        if (s1 == null || s2 == null || s1.length() != s2.length()) {
+            return false; // If either string is null or their lengths are different, they cannot be anagrams
+        }
+        HashMap<Character, Integer> charCount = new HashMap<>();
+        
+        // Count characters in s1
+        for (char c : s1.toCharArray()) {
+            charCount.put(c, charCount.getOrDefault(c, 0) + 1);
+        }
+        
+        // Compare characters in s2 with the counts in the map
+        for (char c : s2.toCharArray()) {
+            if (!charCount.containsKey(c)) {
+                return false; // If a character in s2 is not present in the map, they cannot be anagrams
+            }
+            int count = charCount.get(c);
+            if (count == 0) {
+                return false; // If the count for a character in s2 is already 0, they cannot be anagrams
+            }
+            charCount.put(c, count - 1);
+        }
+        
+        return true; // If all characters in s2 match with counts in the map, they are anagrams
+    }
+
+    public static void main(String[] args) {
+        String s1 = "listen";
+        String s2 = "silent";
+        
+        System.out.println("Are \"" + s1 + "\" and \"" + s2 + "\" anagrams? " + areAnagrams(s1, s2)); // true
+    }
+}
+
+```
+</p>
+</details>
+
 --- 
 
-## Palindrom Checking <a id="palindrome"></a>
+## Palindrome Checking <a id="palindrome"></a>
 
-### Check if a String is a Palindrome: <a id="p1"></a>
+### 1. Check if a String is a Palindrome: <a id="p1"></a>
 
 - Question: Determine if a given string is a palindrome (reads the same forwards and backwards).
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
-### Check if a String is a Palindrome with Ignored Characters: <a id="p2"></a>
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class Palindrome {
+    public static boolean isPalindrome(String str) {
+        if (str == null || str.isEmpty()) {
+            return true; // An empty string or null string is considered a palindrome
+        }
+        int left = 0;
+        int right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true; // If the loop completes without returning false, the string is a palindrome
+    }
+
+    public static void main(String[] args) {
+        String str1 = "racecar";
+        String str2 = "hello";
+        
+        System.out.println("Is \"" + str1 + "\" a palindrome? " + isPalindrome(str1)); // true
+        System.out.println("Is \"" + str2 + "\" a palindrome? " + isPalindrome(str2)); // false
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+### 2. Check if a String is a Palindrome with Ignored Characters: <a id="p2"></a>
 
 - Question: Determine if a given string is a palindrome after ignoring non-alphanumeric characters and considering case insensitivity.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
---- 
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class Palindrome {
+    public static boolean isPalindrome(String str) {
+        if (str == null || str.isEmpty()) {
+            return true; // An empty string or null string is considered a palindrome
+        }
+        int left = 0;
+        int right = str.length() - 1;
+        while (left < right) {
+            char leftChar = Character.toLowerCase(str.charAt(left));
+            char rightChar = Character.toLowerCase(str.charAt(right));
+            if (!Character.isLetterOrDigit(leftChar)) {
+                left++;
+            } else if (!Character.isLetterOrDigit(rightChar)) {
+                right--;
+            } else if (leftChar != rightChar) {
+                return false;
+            } else {
+                left++;
+                right--;
+            }
+        }
+        return true; // If the loop completes without returning false, the string is a palindrome
+    }
+
+    public static void main(String[] args) {
+        String str1 = "A man, a plan, a canal, Panama";
+        String str2 = "race a car";
+        
+        System.out.println("Is \"" + str1 + "\" a palindrome? " + isPalindrome(str1)); // true
+        System.out.println("Is \"" + str2 + "\" a palindrome? " + isPalindrome(str2)); // false
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+ 
 ## Fibonacci Sequence <a id="fibonacci"></a>
 
-### Fibonacci Series using Iteration: <a id="f1"></a>
+### 1. Fibonacci Series using Iteration: <a id="f1"></a>
 
 - Question: Write an iterative function to generate the nth Fibonacci number.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
-### Fibonacci Series using Recursion: <a id="f2"></a>
+<details>
+<summary>using iterative method</summary>
+<p>
+
+```java
+public class FibonacciIterative {
+    public static int generateFibonacci(int n) {
+        if (n <= 1) {
+            return n; // Base case: Fibonacci(0) = 0, Fibonacci(1) = 1
+        }
+        int fib1 = 0;
+        int fib2 = 1;
+        int fib = 0;
+        for (int i = 2; i <= n; i++) {
+            fib = fib1 + fib2;
+            fib1 = fib2;
+            fib2 = fib;
+        }
+        return fib;
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+        System.out.println("Fibonacci(" + n + ") = " + generateFibonacci(n)); // Fibonacci(10) = 55
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+### 2. Fibonacci Series using Recursion: <a id="f2"></a>
 
 - Question: Write a recursive function to generate the nth Fibonacci number.
 - Time Complexity: O(2^n) (exponential time complexity).
 - Space Complexity: O(n) (space complexity due to recursion stack).
 
-### Fibonacci Series using Memoization: <a id="f3"></a>
+<details>
+<summary>using recursion</summary>
+<p>
+
+```java
+public class FibonacciRecursive {
+    public static int generateFibonacci(int n) {
+        if (n <= 1) {
+            return n; // Base case: Fibonacci(0) = 0, Fibonacci(1) = 1
+        }
+        return generateFibonacci(n - 1) + generateFibonacci(n - 2); // Recursive call
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+        System.out.println("Fibonacci(" + n + ") = " + generateFibonacci(n)); // Fibonacci(10) = 55
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+### 3. Fibonacci Series using Memoization: <a id="f3"></a>
 
 - Question: Write a recursive function with memoization to generate the nth Fibonacci number.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(n) (space complexity due to memoization table).
 
-### Fibonacci Series using Dynamic Programming (Bottom-up approach): <a id="f4"></a>
+<details>
+<summary>using hashmap</summary>
+<p>
+
+```java
+import java.util.HashMap;
+
+public class FibonacciWithMemoization {
+    private static HashMap<Integer, Integer> memo = new HashMap<>();
+
+    public static int generateFibonacci(int n) {
+        if (n <= 1) {
+            return n; // Base case: Fibonacci(0) = 0, Fibonacci(1) = 1
+        }
+        if (memo.containsKey(n)) {
+            return memo.get(n); // Return memoized value if already computed
+        }
+        int fib = generateFibonacci(n - 1) + generateFibonacci(n - 2);
+        memo.put(n, fib); // Memoize the computed Fibonacci number
+        return fib;
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+        System.out.println("Fibonacci(" + n + ") = " + generateFibonacci(n)); // Fibonacci(10) = 55
+    }
+}
+
+```
+
+</p>
+
+</details>
+
+---
+### 4. Fibonacci Series using Dynamic Programming (Bottom-up approach): <a id="f4"></a>
 
 - Question: Write a function to generate the nth Fibonacci number using dynamic programming (bottom-up approach).
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(n) (space complexity due to storing previous results).
 
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class Fibonacci {
+    public static int generateFibonacci(int n) {
+        if (n <= 1) {
+            return n; // Base case: Fibonacci(0) = 0, Fibonacci(1) = 1
+        }
+        int[] fib = new int[n + 1];
+        fib[0] = 0;
+        fib[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2]; // Dynamic programming: Fibonacci(i) = Fibonacci(i-1) + Fibonacci(i-2)
+        }
+        return fib[n];
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+        System.out.println("Fibonacci(" + n + ") = " + generateFibonacci(n)); // Fibonacci(10) = 55
+    }
+}
+
+```
+
+</p>
+</details>
+
 ---
 ## Stacks <a id="stacks"></a>
 
-### Implement a Stack using Arrays: <a id="s1"></a>
+### 1. Implement a Stack using Arrays: <a id="s1"></a>
 
 - Question: Implement a stack data structure using arrays and support operations like push, pop, and peek.
 - Time Complexity: O(1) for push, pop, and peek operations.
 - Space Complexity: O(n) where n is the maximum capacity of the stack.
 
-### Implement a Stack using Linked Lists: <a id="s2"></a>
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class Stack {
+    private int[] array;
+    private int top; // Index of the top element
+    private int capacity; // Maximum capacity of the stack
+
+    public Stack(int capacity) {
+        this.capacity = capacity;
+        this.array = new int[capacity];
+        this.top = -1; // Stack is initially empty
+    }
+
+    // Push operation
+    public void push(int data) {
+        if (isFull()) {
+            System.out.println("Stack is full. Cannot push.");
+            return;
+        }
+        array[++top] = data;
+    }
+
+    // Pop operation
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. Cannot pop.");
+            return -1;
+        }
+        return array[top--];
+    }
+
+    // Peek operation
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. Cannot peek.");
+            return -1;
+        }
+        return array[top];
+    }
+
+    // Check if the stack is empty
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    // Check if the stack is full
+    public boolean isFull() {
+        return top == capacity - 1;
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack(5);
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        System.out.println("Top element: " + stack.peek()); // 3
+        System.out.println("Popped element: " + stack.pop()); // 3
+        System.out.println("Top element after pop: " + stack.peek()); // 2
+    }
+}
+
+
+```
+</p>
+</details>
+
+---
+### 2. Implement a Stack using Linked Lists: <a id="s2"></a>
 
 - Question: Implement a stack data structure using a linked list and support operations like push, pop, and peek.
 - Time Complexity: O(1) for push, pop, and peek operations.
 - Space Complexity: O(n) where n is the number of elements in the stack.
 
-### Check Balanced Parentheses: <a id="s3"></a>
+<details>
+<summary>code</summary>
+<p>
+
+```java
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class Stack {
+    private Node top; // Top of the stack
+
+    // Push operation
+    public void push(int data) {
+        Node newNode = new Node(data);
+        newNode.next = top;
+        top = newNode;
+    }
+
+    // Pop operation
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. Cannot pop.");
+            return -1;
+        }
+        int data = top.data;
+        top = top.next;
+        return data;
+    }
+
+    // Peek operation
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. Cannot peek.");
+            return -1;
+        }
+        return top.data;
+    }
+
+    // Check if the stack is empty
+    public boolean isEmpty() {
+        return top == null;
+    }
+
+    public static void main(String[] args) {
+        Stack stack = new Stack();
+
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        System.out.println("Top element: " + stack.peek()); // 3
+        System.out.println("Popped element: " + stack.pop()); // 3
+        System.out.println("Top element after pop: " + stack.peek()); // 2
+    }
+}
+
+```
+</p>
+</details>
+
+---
+### 3. Check Balanced Parentheses: <a id="s3"></a>
 
 - Question: Given a string containing only parentheses, brackets, and braces, determine if the brackets are balanced.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(n) (space complexity due to the stack).
 
-### Implement a Stack using Two Queues: <a id="s4"></a>
+<details>
+<summary>code</summary>
+<p>
+
+```java
+import java.util.Stack;
+
+public class BalancedBrackets {
+    public static boolean isBalanced(String str) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : str.toCharArray()) {
+            if (c == '(' || c == '[' || c == '{') {
+                stack.push(c);
+            } else if (c == ')' || c == ']' || c == '}') {
+                if (stack.isEmpty()) {
+                    return false; // Closing bracket with no corresponding opening bracket
+                }
+                char top = stack.pop();
+                if ((c == ')' && top != '(') || (c == ']' && top != '[') || (c == '}' && top != '{')) {
+                    return false; // Mismatched brackets
+                }
+            }
+        }
+        return stack.isEmpty(); // Stack should be empty for balanced brackets
+    }
+
+    public static void main(String[] args) {
+        String str1 = "{[()]}";
+        String str2 = "{[()]";
+        String str3 = "{[(])}";
+        String str4 = "{[}";
+        
+        System.out.println("String 1 is balanced: " + isBalanced(str1));
+        System.out.println("String 2 is balanced: " + isBalanced(str2));
+        System.out.println("String 3 is balanced: " + isBalanced(str3));
+        System.out.println("String 4 is balanced: " + isBalanced(str4));
+    }
+}
+
+```
+</p>
+</details>
+
+---
+### 4. Implement a Stack using Two Queues: <a id="s4"></a>
 
 - Question: Implement a stack data structure using two queues and support operations like push, pop, and peek.
 - Time Complexity: O(1) for push operation, O(n) for pop operation (where n is the number of elements in the stack).
 - Space Complexity: O(n) where n is the number of elements in the stack.
 
+<details>
+<summary>code</summary>
+<p>
+
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class StackWithQueues {
+    private Queue<Integer> queue1;
+    private Queue<Integer> queue2;
+
+    public StackWithQueues() {
+        queue1 = new LinkedList<>();
+        queue2 = new LinkedList<>();
+    }
+
+    // Push operation
+    public void push(int item) {
+        queue1.offer(item);
+    }
+
+    // Pop operation
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. Cannot pop.");
+            return -1;
+        }
+        // Move all elements except the last one to queue2
+        while (queue1.size() > 1) {
+            queue2.offer(queue1.poll());
+        }
+        int poppedItem = queue1.poll(); // Last element remaining in queue1 is the one to be popped
+        // Swap queue1 and queue2 references
+        Queue<Integer> temp = queue1;
+        queue1 = queue2;
+        queue2 = temp;
+        return poppedItem;
+    }
+
+    // Peek operation
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty. Cannot peek.");
+            return -1;
+        }
+        int peekedItem = -1;
+        while (!queue1.isEmpty()) {
+            peekedItem = queue1.poll();
+            queue2.offer(peekedItem);
+        }
+        // Swap queue1 and queue2 references
+        Queue<Integer> temp = queue1;
+        queue1 = queue2;
+        queue2 = temp;
+        return peekedItem;
+    }
+
+    // Check if the stack is empty
+    public boolean isEmpty() {
+        return queue1.isEmpty();
+    }
+}
+
+```
+</p>
+</details>
+
 --- 
 
 ## Queues <a id="queues"></a>
 
-### Implement a Queue using Arrays <a id="q1"></a>
+### 1. Implement a Queue using Arrays <a id="q1"></a>
 
 - Question :  Implement a queue data structure using arrays and support operations like enqueue and dequeue.
 - Time Complexity :
@@ -670,7 +1453,9 @@ public class UnboundedQueue {
 </p>
 </details>
 
-### Implement a Queue using Linked Lists <a id="q2"></a>
+---
+
+### 2. Implement a Queue using Linked Lists <a id="q2"></a>
 
 - Question: Implement a queue data structure using a linked list and support operations like enqueue and dequeue.
 - Time Complexity: O(1) for enqueue and dequeue operations.
@@ -745,7 +1530,9 @@ public class Queue {
 </p>
 </details>
 
-### Implement a Circular Queue <a id="q3"></a>
+---
+
+### 3. Implement a Circular Queue <a id="q3"></a>
 
 - Question: Implement a circular queue data structure using arrays and support operations like enqueue and dequeue.
 - Time Complexity: O(1) for enqueue and dequeue operations.
@@ -823,7 +1610,7 @@ public class CircularQueue {
 
 ## Graphs <a id="graphs"></a>
 
-### Implement Depth First Search (DFS) <a id="g1"></a>
+### 1. Implement Depth First Search (DFS) <a id="g1"></a>
 
 - Question: Implement the depth-first search (DFS) algorithm for a graph.
 - Time Complexity: O(V + E) where V is the number of vertices and E is the number of edges.
@@ -886,7 +1673,10 @@ public class DFS {
 </p>
 </details>
 
-### Implement Breadth First Search (BFS) <a id="g2"></a>
+
+---
+
+### 2. Implement Breadth First Search (BFS) <a id="g2"></a>
 
 - Question: Implement the breadth-first search (BFS) algorithm for a graph.
 - Time Complexity: O(V + E) where V is the number of vertices and E is the number of edges.
@@ -953,3 +1743,5 @@ public class BFS {
 ```
 </p>
 </details>
+
+---
