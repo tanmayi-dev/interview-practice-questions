@@ -2,7 +2,7 @@
 
 - [Arrays](#arrays)
   - [1. Sort an Array](#a1)
-  - [2. Sort an Array of 0s](#a2)
+  - [2. Sort an Array of 0s and 1s](#a2)
   - [3. Sort an array of 0s, 1s, and 2s (Dutch National Flag Problem)](#a3)
 - [Linked Lists](#linkedlists)
   - [1. Reverse a Linked List](#l1)
