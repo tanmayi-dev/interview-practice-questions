@@ -898,45 +898,77 @@ node of linked list. Therefore, there exists a loop.
 <p>
 
 ```java
-class ListNode {
-    int val;
-    ListNode next;
-    
-    ListNode(int val) {
-        this.val = val;
-    }
-}
+class LinkedList {
+    Node head; // head of list
 
-public class LinkedListCycle {
-    public static boolean hasCycle(ListNode head) {
-        if (head == null || head.next == null) {
-            return false; // Empty or single-node list cannot have a cycle
+    /* Linked list Node */
+    class Node {
+        int data;
+        Node next;
+        Node(int x) {
+            data = x;
+            next = null;
         }
-        
-        ListNode slow = head;
-        ListNode fast = head.next;
-        
-        while (slow != fast) {
-            if (fast == null || fast.next == null) {
-                return false; // Reached end of list, no cycle
+    }
+
+    /* Inserts a new Node at the end of the list. */
+    public void append(int new_data) {
+        Node new_node = new Node(new_data);
+        if (head == null) {
+            head = new_node;
+            return;
+        }
+        Node last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        last.next = new_node;
+    }
+
+    /* Creates a loop in the linked list at the specified position */
+    public void createLoop(int x) {
+        if (x <= 0) return;
+        Node loopNode = null;
+        Node current = head;
+        int count = 1;
+        while (current != null && current.next != null) {
+            if (count == x) {
+                loopNode = current;
             }
-            slow = slow.next; // Move slow pointer by one step
-            fast = fast.next.next; // Move fast pointer by two steps
+            current = current.next;
+            count++;
         }
-        
-        return true; // Fast and slow pointers meet, indicating a cycle
+        if (loopNode != null) {
+            current.next = loopNode;
+        }
     }
 
-    public static void main(String[] args) {
-        // Create a sample linked list with a cycle: 1 -> 2 -> 3 -> 4 -> 5 -> 2 (cycle)
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
-        head.next.next.next.next.next = head.next; // Create cycle
-        
-        System.out.println("Does the linked list contain a cycle? " + hasCycle(head));
+    /* Detects loop in the linked list using Floyd's Cycle-Finding Algorithm */
+    void detectLoop() {
+        Node slow_p = head, fast_p = head;
+        while (slow_p != null && fast_p != null && fast_p.next != null) {
+            slow_p = slow_p.next;
+            fast_p = fast_p.next.next;
+            if (slow_p == fast_p) {
+                System.out.println("Loop Found");
+                return;
+            }
+        }
+        System.out.println("No Loop");
+    }
+
+    /* Driver program to test above functions */
+    public static void main(String args[]) {
+        LinkedList llist = new LinkedList();
+
+        llist.append(1);
+        llist.append(3);
+        llist.append(4);
+
+        int x = 2; // Position at which tail is connected to create a loop
+        llist.createLoop(x);
+
+        llist.detectLoop(); // Output: Loop Found
     }
 }
 
@@ -946,7 +978,10 @@ public class LinkedListCycle {
 </details>
 
 --- 
-### 4. Merge two sorted linked lists: <a id="l4"></a>
+### 4. Merge two sorted linked lists: <a id="l4"></a> 
+
+- [gfg](https://www.geeksforgeeks.org/merge-two-sorted-linked-lists/)
+- [leetcode](https://leetcode.com/problems/merge-two-sorted-lists/description/)
 
 - Question: Given two sorted linked lists, merge them into a single sorted linked list.
 - Time Complexity: O(n + m) where n and m are the lengths of the two linked lists.
