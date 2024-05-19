@@ -3,7 +3,18 @@
 
 # Most asked Coding Questions
 
-## Arrays and Strings
+- [Arrays and Strings](#arrays)
+- [Searching and Sorting](#sort)
+- [Stacks](#stacks)
+- [Queues](#queues)
+- [Linked Lists](#linkedlist)
+- [Heaps](#heaps)
+- [Trees and BST](#trees)
+- [Dynamic Programming](#dp)
+- [Graphs](#graphs)
+- [Miscellaneous](#misc)
+
+## Arrays and Strings <a id="arrays"></a>
 
 ### 1. Find the missing number in an array of integers
 <details>
@@ -180,10 +191,59 @@
 
 ---
 
+### 16. Maximum Sum Subarray : Kadane's Algorithm
+```
+Input:
+N = 5
+Arr[] = {1,2,3,-2,5}
+Output:
+9
+Explanation:
+Max subarray sum is 9
+of elements (1, 2, 3, -2, 5) which 
+is a contiguous subarray.
+```
+<details>
+<summary>Answer</summary>
+<p>
 
 
+```java
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+class Main {
+    public static int maximumSubarraySum(int[] arr) {
+        int n = arr.length;
+        int maxSum = Integer.MIN_VALUE;
 
-## Searching and Sorting
+        for (int i = 0; i <= n - 1; i++) {
+            int currSum = 0;
+            for (int j = i; j <= n - 1; j++) {
+            currSum += arr[j];
+            if (currSum > maxSum) {
+                maxSum = currSum;
+            }
+            }
+        }
+
+        return maxSum;
+    }
+    public static void main(String args[]) {
+        // Your code goes here
+        int a[] = {1, 2, 3, -2, 5};
+        System.out.println(maximumSubarraySum(a));
+    }
+}
+```
+
+</p>
+</details>
+
+---
+
+
+## Searching and Sorting <a id="sort"></a>
 
 ### 1. Implement Binary Search
 <details>
@@ -298,8 +358,33 @@
 
 ---
 
+## Stacks <a id="stacls"></a>
 
-## Linked Lists
+### 1. 
+<details>
+<summary>Answer</summary>
+<p>
+
+
+</p>
+</details>
+
+---
+
+## Queues <a id="queues"></a>
+
+### 1. 
+<details>
+<summary>Answer</summary>
+<p>
+
+
+</p>
+</details>
+
+---
+
+## Linked Lists <a id="linkedlist"></a>
 
 ### 1. Implement an algorithm to reverse a linked list
 <details>
@@ -370,8 +455,21 @@
 
 ---
 
+## Heaps <a id="heaps"></a>
 
-## Trees and Binary Search Trees (BST)
+### 1. 
+<details>
+<summary>Answer</summary>
+<p>
+
+
+</p>
+</details>
+
+---
+
+
+## Trees and Binary Search Trees (BST) <a id="trees"></a>
 
 ### 1. Find the height of a binary tree
 <details>
@@ -469,7 +567,7 @@
 
 ---
 
-## Dynamic Programming
+## Dynamic Programming <a id="dp"></a>
 
 ### 1. Find the longest common subsequence
 <details>
@@ -540,7 +638,7 @@
 
 ---
 
-## Graphs and DFS / BFS
+## Graphs and DFS / BFS <a id="graphs"></a>
 
 ### 1. Implement depth-first search (DFS) and breadth-first search (BFS)
 <details>
@@ -613,7 +711,7 @@
 
 
 
-## Miscellaneous
+## Miscellaneous <a id="misc"></a>
 
 ### 1. Implement a LRU (Least Recently Used) Cache
 <details>
