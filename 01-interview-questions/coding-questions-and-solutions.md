@@ -17,8 +17,13 @@
 ## Arrays and Strings <a id="arrays"></a>
 
 ### 1. Find the missing number in an array of integers - [gfg](https://www.geeksforgeeks.org/find-the-missing-number/), [tuf](https://takeuforward.org/arrays/find-the-missing-number-in-an-array/)
+
+```
+Input: arr[] = {1, 2, 4, 6, 3, 7, 8} , N = 8
+Output: 5
+```
 <details>
-<summary>Answer</summary>
+<summary>A1: Using XOR</summary>
 <p>
 
 1. Linear Search - O(N^2)
@@ -93,8 +98,19 @@ public class tUf {
 ---
 
 ### 3. Check if a string is a palindrome [leetcode](https://leetcode.com/problems/valid-palindrome/description/)
+
+```
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome.
+
+Input: s = "race a car"
+Output: false
+Explanation: "raceacar" is not a palindrome.
+```
+    
 <details>
-<summary>Answer</summary>
+<summary>A1: Palindrome</summary>
 <p>
 
 ```java
@@ -125,11 +141,99 @@ class Solution {
 ---
 
 ### 4. Find the first non-repeating character in a string
+```
+Input: “geeksforgeeks”
+Output: f
+Explanation: As ‘f’ is first character in the string which does not repeat.
+```
 <details>
-<summary>Answer</summary>
+<summary>A1: Using HashMap</summary>
 <p>
 
+1. Traverse over string for every character - O(N^2)
+2. Using HashMap and single String Traversal- O(N)
+3. Using Count array - Initialize with -1. If it is -1 then change it to i and. If it is not -1, then this means that this character already appeared before, so change it to -2. - O(N)
 
+```java
+// Java program to find first non-repeating character
+// Note : hashmap is used
+
+import java.util.*;
+
+class CountIndex {
+	int count, index;
+
+	// constructor for first occurrence
+	public CountIndex(int index)
+	{
+		this.count = 1;
+		this.index = index;
+	}
+
+	// method for updating count
+	public void incCount() { this.count++; }
+}
+class GFG {
+	static final int NO_OF_CHARS = 256;
+
+	static HashMap<Character, CountIndex> hm
+		= new HashMap<Character, CountIndex>(NO_OF_CHARS);
+
+	/* calculate count of characters
+	in the passed string */
+	static void getCharCountArray(String str)
+	{
+		for (int i = 0; i < str.length(); i++) {
+			// If character already occurred,
+			if (hm.containsKey(str.charAt(i))) {
+				// updating count
+				hm.get(str.charAt(i)).incCount();
+			}
+
+			// If it's first occurrence, then store
+			// the index and count = 1
+			else {
+				hm.put(str.charAt(i), new CountIndex(i));
+			}
+		}
+	}
+
+	/* The method returns index of first non-repeating
+	character in a string. If all characters are
+	repeating then returns -1 */
+	static int firstNonRepeating(String str)
+	{
+		getCharCountArray(str);
+		int result = Integer.MAX_VALUE, i;
+		for (Map.Entry<Character, CountIndex> entry :
+			hm.entrySet()) {
+			int c = entry.getValue().count;
+			int ind = entry.getValue().index;
+			if (c == 1 && ind < result) {
+				result = ind;
+			}
+		}
+
+		return result;
+	}
+
+	// Driver method
+	public static void main(String[] args)
+	{
+		String str = "geeksforgeeks";
+		int index = firstNonRepeating(str);
+
+		System.out.println(
+			index == Integer.MAX_VALUE
+				? "Either all characters are repeating "
+					+ " or string is empty"
+				: "First non-repeating character is "
+					+ str.charAt(index));
+	}
+}
+
+
+```
 
 </p>
 </details>
@@ -149,11 +253,126 @@ class Solution {
 ---
 
 ### 6. Reverse a String - [link](https://www.geeksforgeeks.org/problems/reverse-a-string/1)
+```
+Input : s = "abc"
+Output : s = "cba"
+
+Input : s = "geeksforgeeks"
+Output : s = "skeegrofskeeg"
+```
 <details>
-<summary>Answer</summary>
+<summary>A1 : Using String class</summary>
 <p>
 
+```java
+// java program to reverse a word
 
+import java.io.*;
+import java.util.Scanner;
+
+class GFG {
+	public static void main (String[] args) {
+	
+		String str= "Geeks", nstr="";
+		char ch;
+	
+	System.out.print("Original word: ");
+	System.out.println("Geeks"); //Example word
+	
+	for (int i=0; i<str.length(); i++)
+	{
+		ch= str.charAt(i); //extracts each character
+		nstr= ch+nstr; //adds each character in front of the existing string
+	}
+	System.out.println("Reversed word: "+ nstr);
+	}
+}
+
+
+```
+</p>
+</details>
+
+<details>
+<summary>A2 : Using ArrayList</summary>
+<p>
+
+```java
+
+
+```
+</p>
+</details>
+
+<details>
+<summary>A2 : Using ArrayList</summary>
+<p>
+
+```java
+// Java program to Reverse a String using ListIterator
+import java.lang.*;
+import java.io.*;
+import java.util.*;
+
+// Class of ReverseString
+class ReverseString {
+	public static void main(String[] args)
+	{
+		String input = "Geeks For Geeks";
+		char[] hello = input.toCharArray();
+		List<Character> trial1 = new ArrayList<>();
+
+		for (char c : hello)
+			trial1.add(c);
+
+		Collections.reverse(trial1);
+		ListIterator li = trial1.listIterator();
+		while (li.hasNext())
+			System.out.print(li.next());
+	}
+}
+
+
+```
+</p>
+</details>
+
+<details>
+<summary>A3: Using Stack</summary>
+<p>
+
+```java
+import java.util.*;
+
+class GFG {
+	public static void main(String[] args) {
+		
+		String s="Geeks For Geeks";
+		
+		//initializing a stack of type char
+		Stack<Character> stack=new Stack<>();
+		
+		for(char c:s.toCharArray())
+		{
+			//pushing all the characters
+			stack.push(c);
+		}
+		
+		String temp="";
+		
+		while(!stack.isEmpty())
+		{
+			//popping all the chars and appending to temp
+			temp+=stack.pop();
+		}
+		
+		System.out.println("Reversed string is : "+temp);
+		
+	}
+}
+
+
+```
 
 </p>
 </details>
@@ -163,6 +382,9 @@ class Solution {
 <summary>Answer</summary>
 <p>
 
+- Objects of String are immutable.
+- String class in Java does not have reverse() method, however, the StringBuilder class has built-in reverse() method.
+- StringBuilder class do not have toCharArray() method, while String class does have toCharArray() method. 
 
 
 </p>
