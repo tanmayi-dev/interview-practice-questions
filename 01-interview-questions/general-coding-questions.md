@@ -418,26 +418,30 @@ Output: [0, 0, 1, 1, 2, 2]
 ```
 
 <details>
-<summary>3 pointer method</summary>
+<summary>2 pointer method</summary>
 <p>
 
 ```java
 public class SortColors {
     public static void sortColors(int[] nums) {
-        int low = 0;
-        int mid = 0;
+       int low = 0;
         int high = nums.length - 1;
-        
-        while (mid <= high) {
-            if (nums[mid] == 0) {
-                swap(nums, low, mid);
+ 
+        for (int i = 0; i < n && i <= high;) {
+            // Current element is 0
+            if (arr[i] == 0) {
+                swap(arr, low, i);
                 low++;
-                mid++;
-            } else if (nums[mid] == 1) {
-                mid++;
-            } else {
-                swap(nums, mid, high);
+                i++;
+            }
+            // Current element is 2
+            else if (arr[i] == 2) {
+                swap(arr, i, high);
                 high--;
+            }
+            // Current element is 1
+            else {
+                i++;
             }
         }
     }
