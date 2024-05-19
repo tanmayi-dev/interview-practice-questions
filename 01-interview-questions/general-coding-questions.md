@@ -465,6 +465,60 @@ public class SortColors {
 </p>
 </details>
 
+<details>
+<summary>3 pointer method</summary>
+<p>
+
+```java
+public class SortColors {
+    public static void sortColors(int[] nums) {
+        int low = 0;
+        int mid = 0, temp = 0;
+        int high = nums.length - 1;
+
+        // Iterate till all the elements
+        // are sorted
+        while (mid <= hi) {
+            switch (a[mid]) {
+// If the element is 0
+              case 0: {
+                  temp = a[low];
+                  a[low] = a[mid];
+                  a[mid] = temp;
+                  low++;
+                  mid++;
+                  break;
+              }
+                  // If the element is 1
+              case 1:
+                  mid++;
+                  break;
+                  // If the element is 2
+              case 2: {
+                  temp = a[mid];
+                  a[mid] = a[high];
+                  a[high] = temp;
+                  high--;
+                  break;
+              }
+            }
+        }
+       
+    }
+    
+    public static void main(String[] args) {
+        int[] nums = {2, 0, 1, 1, 0, 2};
+        System.out.println("Original array: " + Arrays.toString(nums));
+        sortColors(nums);
+        System.out.println("Sorted array: " + Arrays.toString(nums));
+    }
+}
+
+```
+
+</p>
+</details>
+
 ---
 
 ## Binary Search <a id="binary"></a>
