@@ -373,6 +373,37 @@ public class Main {
 </p>
 </details>
 
+<details>
+<summary>Two Pointer - Sana sol</summary>
+<p>
+
+```java
+class Solution {
+    void segregate0and1(int[] arr, int n) {
+        // code here
+        int left = 0, right = arr.length - 1;
+        
+        while (left < right) {
+            if (arr[left] == 1 && arr[right] == 0) {
+                int tmp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = tmp;
+            }
+            if (arr[left] == 0) {
+                left++;
+            }
+            if (arr[right] == 1) {
+                right--;
+            }
+        }
+    }
+
+}
+```
+
+</p>
+</details>
+
 --- 
 ### 3. Sort an array of 0s, 1s, and 2s (Dutch National Flag Problem): <a id="a3"></a>
 
