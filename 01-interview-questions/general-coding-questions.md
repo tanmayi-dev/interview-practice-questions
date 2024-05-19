@@ -71,8 +71,8 @@ Output: [1, 1, 2, 3, 4, 5, 5, 6, 9]
 <summary>Bubble Sort</summary>
 <p>
 
-- Time Complexity: O(n^2) (quadratic time complexity).
-- Space Complexity: O(1) (constant space complexity).
+<li> Time Complexity: O(n^2) (quadratic time complexity). </li>
+<li> Space Complexity: O(1) (constant space complexity). </li>
   
 ```java
 public class BubbleSort {
