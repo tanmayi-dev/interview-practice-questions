@@ -194,14 +194,13 @@
 ### 16. Maximum Sum Subarray : Kadane's Algorithm
 ```
 Input:
-N = 5
 Arr[] = {1,2,3,-2,5}
+
 Output:
+
 9
 Explanation:
-Max subarray sum is 9
-of elements (1, 2, 3, -2, 5) which 
-is a contiguous subarray.
+Max subarray sum is 9 of elements (1, 2, 3, -2, 5) which is a contiguous subarray.
 ```
 <details>
 <summary>Answer</summary>
