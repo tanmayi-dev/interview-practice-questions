@@ -1,6 +1,5 @@
 [Must Do Coding Questions - GFG](https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/)
 
-# Implement Data Structures and their Operations in Java
 
 # Most asked Coding Questions
 
