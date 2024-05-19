@@ -4,14 +4,21 @@
   - [1. Sort an Array](#a1)
   - [2. Sort an Array of 0s and 1s](#a2)
   - [3. Sort an array of 0s, 1s, and 2s (Dutch National Flag Problem)](#a3)
+- [Binary Search](#binary)
+  - [1. Implement Binary Search](#b1)
+  - [2. Find the first occurrence of a Target value in a Sorted Array](#b2)
+  - [3. Find the Last Occurrence of a Target Value in a Sorted Array](#b3)
+  - [4. Find the Peak Element in an Array](#b4)
 - [Linked Lists](#linkedlists)
-  - [1. Reverse a Linked List](#l1)
-  - [2. Detect a cycle in Linked list](#l2)
-  - [3. Merge two sorted linked lists](#l3)
+  - [1. Implement Singly Linked List](#l1) 
+  - [2. Reverse a Linked List](#l2)
+  - [3. Detect a cycle in Linked list](#l3)
+  - [4. Merge two sorted linked lists](#l4)
 - [Trees](#trees)
-  - [1. Binary Search Tree (BST) validation](#t1)
-  - [2. Inorder Traversal of a Binary Tree](#t2)
-  - [3. Lowest Common Ancestor in a Binary Tree](#t3)
+  - [1. Implement Binary Search Tree](#t1) 
+  - [2. Binary Search Tree (BST) validation](#t2)
+  - [3. Inorder Traversal of a Binary Tree](#t3)
+  - [4. Lowest Common Ancestor in a Binary Tree](#t4)
 - [String Manipulation](#stringm)
   - [1. Reverse a String](#sm1)
   - [2. Reverse Each Word in a String](#sm2)
@@ -39,7 +46,13 @@
 - [Graphs](#graphs)
   - [1. Depth First Search](#g1)
   - [2. Breadth First Search](#g2)
-
+- [Heaps](#heaps)
+  - [1. Implement Min Heap Data Structure](#h1)
+  - [2. Implement Max Heap Data Structure](#h2)
+  - [3. Find the Kth Largest Element in an Array](#h3)
+  - [4. Merge K Sorted Lists](#h4)
+  - [5. Find the Kth Smallest Element in a Sorted Matrix](#h5)
+  - [6. Find Median from Data Stream](#h6)
 
 ## Arrays <a id="arrays"></a>
 
@@ -48,6 +61,11 @@
 - Question: Implement a function to sort an array of integers.
 - Time Complexity: O(n log n) (for efficient sorting algorithms like quicksort or mergesort).
 - Space Complexity: O(n) (for the auxiliary space used by sorting algorithms).
+
+```
+Input: [3, 1, 4, 1, 5, 9, 2, 6, 5]
+Output: [1, 1, 2, 3, 4, 5, 5, 6, 9]
+```
 
 <details>
 <summary>Bubble Sort</summary>
@@ -273,6 +291,11 @@ public class QuickSort {
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
+```
+Input: [0, 1, 0, 1, 1, 0, 1, 0, 1]
+Output: [0, 0, 0, 0, 1, 1, 1, 1, 1]
+```
+
 <details>
 <summary>New Array</summary>
 <p>
@@ -357,52 +380,909 @@ public class Main {
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
+```
+Input: [2, 0, 1, 1, 0, 2]
+Output: [0, 0, 1, 1, 2, 2]
+
+```
+
+<details>
+<summary>3 pointer method</summary>
+<p>
+
+```java
+public class SortColors {
+    public static void sortColors(int[] nums) {
+        int low = 0;
+        int mid = 0;
+        int high = nums.length - 1;
+        
+        while (mid <= high) {
+            if (nums[mid] == 0) {
+                swap(nums, low, mid);
+                low++;
+                mid++;
+            } else if (nums[mid] == 1) {
+                mid++;
+            } else {
+                swap(nums, mid, high);
+                high--;
+            }
+        }
+    }
+    
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {2, 0, 1, 1, 0, 2};
+        System.out.println("Original array: " + Arrays.toString(nums));
+        sortColors(nums);
+        System.out.println("Sorted array: " + Arrays.toString(nums));
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+
+## Binary Search <a id="binary"></a>
+
+### 1. Implement Binary Search <a id="b1"></a>
+
+- Question: Implement the binary search algorithm to find a target value in a sorted array.
+- Time Complexity: O(log n) (logarithmic time complexity).
+- Space Complexity: O(1) (constant space complexity).
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class BinarySearch {
+    public static int binarySearch(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1; // Target not found
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int target = 5;
+        System.out.println(binarySearch(nums, target)); // Output: 4
+    }
+}
+
+```
+
+</p>
+</details>
+
+
+### 2. Find the first occurrence of a Target value in a Sorted Array <a id="b2"></a>
+
+- Question: Given a sorted array, find the first occurrence of a target value.
+- Time Complexity: O(log n) (logarithmic time complexity).
+- Space Complexity: O(1) (constant space complexity).
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class FirstOccurrenceBinarySearch {
+    public static int findFirstOccurrence(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        int result = -1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                result = mid;
+                right = mid - 1; // Continue searching in the left half
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 2, 2, 3, 4, 5};
+        int target = 2;
+        System.out.println(findFirstOccurrence(nums, target)); // Output: 1
+    }
+}
+
+```
+
+</p>
+</details>
+
+### 3. Find the Last Occurrence of a Target Value in a Sorted Array <a id="b3"></a>
+
+- Question: Given a sorted array, find the last occurrence of a target value.
+- Time Complexity: O(log n) (logarithmic time complexity).
+- Space Complexity: O(1) (constant space complexity).
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class LastOccurrenceBinarySearch {
+    public static int findLastOccurrence(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
+        int result = -1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == target) {
+                result = mid;
+                left = mid + 1; // Continue searching in the right half
+            } else if (nums[mid] < target) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 2, 2, 3, 4, 5};
+        int target = 2;
+        System.out.println(findLastOccurrence(nums, target)); // Output: 3
+    }
+}
+
+```
+
+</p>
+</details>
+
+### 4. Find the Peak Element in an Array <a id="b4"></a>
+
+- Question: Find a peak element in an array where an element is a peak if it is greater than its neighbors.
+- Time Complexity: O(log n) (logarithmic time complexity).
+- Space Complexity: O(1) (constant space complexity).
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+public class PeakElementBinarySearch {
+    public static int findPeakElement(int[] nums) {
+        int left = 0, right = nums.length - 1;
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] < nums[mid + 1]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        return left;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 2, 3, 1};
+        System.out.println(findPeakElement(nums)); // Output: 2 (index of peak element 3)
+    }
+}
+
+```
+
+</p>
+</details>
 
 ---
 ## Linked Lists <a id="linkedlists"></a>
 
-### 1. Reverse a linked list: <a id="l1"></a>
+### 1. Singly Linked List DataStructure <a id="l1"></a>
+
+- Question: Implement Linked List in Java
+- Add Node at Head Operation (addAtHead method):
+  - Time Complexity: O(1), Space Complexity: O(1)
+- Add Node at Tail Operation (addAtTail method):
+  - Time Complexity: O(n), Space Complexity: O(1)
+- Delete Node Operation (deleteNode method):
+  - Time Complexity: O(n), Space Complexity: O(1)
+- Print Linked List Operation (printList method):
+  - Time Complexity: O(n), Space Complexity: O(1)
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+class ListNode {
+    int val;
+    ListNode next;
+
+    public ListNode(int val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+public class LinkedList {
+    private ListNode head;
+
+    public LinkedList() {
+        this.head = null;
+    }
+
+    public void addAtHead(int val) {
+        ListNode newNode = new ListNode(val);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    public void addAtTail(int val) {
+        ListNode newNode = new ListNode(val);
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        ListNode current = head;
+        while (current.next != null) {
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+
+    public void deleteNode(int val) {
+        if (head == null) {
+            return;
+        }
+        if (head.val == val) {
+            head = head.next;
+            return;
+        }
+        ListNode prev = null;
+        ListNode current = head;
+        while (current != null && current.val != val) {
+            prev = current;
+            current = current.next;
+        }
+        if (current != null) {
+            prev.next = current.next;
+        }
+    }
+
+    public void printList() {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addAtHead(1);
+        linkedList.addAtTail(2);
+        linkedList.addAtTail(3);
+        linkedList.addAtTail(4);
+        linkedList.printList(); // Output: 1 2 3 4
+        linkedList.deleteNode(3);
+        linkedList.printList(); // Output: 1 2 4
+    }
+}
+
+```
+
+### 2. Reverse a linked list: <a id="l2"></a>
 
 - Question: Implement a function to reverse a singly linked list.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
+```
+Original linked list:
+1 2 3 4 5 
+Reversed linked list:
+5 4 3 2 1 
+```
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+class ListNode {
+    int val;
+    ListNode next;
+    
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class ReverseLinkedList {
+    public static ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode current = head;
+        
+        while (current != null) {
+            ListNode nextTemp = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextTemp;
+        }
+        
+        return prev;
+    }
+
+    public static void main(String[] args) {
+        // Create a sample linked list: 1 -> 2 -> 3 -> 4 -> 5
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+        
+        System.out.println("Original linked list:");
+        printList(head);
+        
+        ListNode reversedHead = reverseList(head);
+        
+        System.out.println("Reversed linked list:");
+        printList(reversedHead);
+    }
+    
+    public static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+
+```
+
+</p>
+</details>
+
 ---
-### 2. Detect a cycle in a linked list: <a id="l2"></a>
+### 3. Detect a cycle in a linked list: <a id="l3"></a>
 
 - Question: Write a function to detect if a linked list contains a cycle.
 - Time Complexity: O(n) (linear time complexity).
 - Space Complexity: O(1) (constant space complexity).
 
+<details>
+<summary>Floyd's Tortoise and Hare</summary>
+<p>
+
+```java
+class ListNode {
+    int val;
+    ListNode next;
+    
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class LinkedListCycle {
+    public static boolean hasCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return false; // Empty or single-node list cannot have a cycle
+        }
+        
+        ListNode slow = head;
+        ListNode fast = head.next;
+        
+        while (slow != fast) {
+            if (fast == null || fast.next == null) {
+                return false; // Reached end of list, no cycle
+            }
+            slow = slow.next; // Move slow pointer by one step
+            fast = fast.next.next; // Move fast pointer by two steps
+        }
+        
+        return true; // Fast and slow pointers meet, indicating a cycle
+    }
+
+    public static void main(String[] args) {
+        // Create a sample linked list with a cycle: 1 -> 2 -> 3 -> 4 -> 5 -> 2 (cycle)
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+        head.next.next.next.next.next = head.next; // Create cycle
+        
+        System.out.println("Does the linked list contain a cycle? " + hasCycle(head));
+    }
+}
+
+```
+
+</p>
+</details>
+
 --- 
-### 3. Merge two sorted linked lists: <a id="l3"></a>
+### 4. Merge two sorted linked lists: <a id="l4"></a>
 
 - Question: Given two sorted linked lists, merge them into a single sorted linked list.
 - Time Complexity: O(n + m) where n and m are the lengths of the two linked lists.
 - Space Complexity: O(1) (constant space complexity).
 
+<details>
+<summary>code</summary>
+<p>
+
+```java
+class ListNode {
+    int val;
+    ListNode next;
+    
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+
+public class MergeSortedLinkedLists {
+    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        // Dummy node to serve as the head of the merged list
+        ListNode dummy = new ListNode(-1);
+        ListNode current = dummy;
+        
+        // Traverse both lists and compare their values
+        while (l1 != null && l2 != null) {
+            if (l1.val <= l2.val) {
+                current.next = l1; // Link current to l1
+                l1 = l1.next; // Move l1 to the next node
+            } else {
+                current.next = l2; // Link current to l2
+                l2 = l2.next; // Move l2 to the next node
+            }
+            current = current.next; // Move current to the next node
+        }
+        
+        // Append the remaining nodes of l1 or l2 (if any) to the merged list
+        current.next = (l1 != null) ? l1 : l2;
+        
+        return dummy.next; // Return the head of the merged list (excluding the dummy node)
+    }
+
+    public static void main(String[] args) {
+        // Create two sorted linked lists: 1 -> 2 -> 4 and 1 -> 3 -> 4
+        ListNode l1 = new ListNode(1);
+        l1.next = new ListNode(2);
+        l1.next.next = new ListNode(4);
+        
+        ListNode l2 = new ListNode(1);
+        l2.next = new ListNode(3);
+        l2.next.next = new ListNode(4);
+        
+        System.out.println("Merged sorted linked list:");
+        printList(mergeTwoLists(l1, l2));
+    }
+    
+    public static void printList(ListNode head) {
+        ListNode current = head;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+
+```
+
+</p>
+</details>
+
 ---
 ## Trees <a id="trees"></a>
 
-### 1. Binary Search Tree (BST) validation: <a id="t1"></a>
+### 1. Implement a Binary Search Tree <a id="t1"></a>
+
+- Question: Implement a Binary Search Tree
+- Insert Operation:
+  - Time Complexity: O(h), where h is the height of the tree. In the worst case, it can be O(n) for a skewed tree.
+  - Space Complexity: O(1)
+- Search Operation:
+  - Time Complexity: O(h), where h is the height of the tree.
+  - Space Complexity: O(1)
+- Inorder Traversal (or any other traversal):
+  - Time Complexity: O(n), where n is the number of nodes in the tree.
+  - Space Complexity: O(h), where h is the height of the tree (space complexity due to recursive function calls).
+- Delete Operation:
+  - Time Complexity: O(h), where h is the height of the tree.
+  - Space Complexity: O(1)
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    public TreeNode(int val) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+public class BinarySearchTree {
+    private TreeNode root;
+
+    public BinarySearchTree() {
+        this.root = null;
+    }
+
+    public void insert(int val) {
+        root = insertRecursive(root, val);
+    }
+
+    private TreeNode insertRecursive(TreeNode root, int val) {
+        if (root == null) {
+            root = new TreeNode(val);
+            return root;
+        }
+        if (val < root.val) {
+            root.left = insertRecursive(root.left, val);
+        } else if (val > root.val) {
+            root.right = insertRecursive(root.right, val);
+        }
+        return root;
+    }
+
+    public boolean search(int val) {
+        return searchRecursive(root, val);
+    }
+
+    private boolean searchRecursive(TreeNode root, int val) {
+        if (root == null) {
+            return false;
+        }
+        if (val == root.val) {
+            return true;
+        }
+        if (val < root.val) {
+            return searchRecursive(root.left, val);
+        }
+        return searchRecursive(root.right, val);
+    }
+
+    public void inorder() {
+        inorderRecursive(root);
+    }
+
+    private void inorderRecursive(TreeNode root) {
+        if (root != null) {
+            inorderRecursive(root.left);
+            System.out.print(root.val + " ");
+            inorderRecursive(root.right);
+        }
+    }
+
+    public void delete(int val) {
+        root = deleteRecursive(root, val);
+    }
+
+    private TreeNode deleteRecursive(TreeNode root, int val) {
+        if (root == null) {
+            return root;
+        }
+        if (val < root.val) {
+            root.left = deleteRecursive(root.left, val);
+        } else if (val > root.val) {
+            root.right = deleteRecursive(root.right, val);
+        } else {
+            if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            }
+            root.val = findMin(root.right);
+            root.right = deleteRecursive(root.right, root.val);
+        }
+        return root;
+    }
+
+    private int findMin(TreeNode root) {
+        int minVal = root.val;
+        while (root.left != null) {
+            minVal = root.left.val;
+            root = root.left;
+        }
+        return minVal;
+    }
+
+    public static void main(String[] args) {
+        BinarySearchTree bst = new BinarySearchTree();
+        bst.insert(8);
+        bst.insert(3);
+        bst.insert(10);
+        bst.insert(1);
+        bst.insert(6);
+        bst.insert(4);
+        bst.insert(7);
+        bst.insert(14);
+        bst.insert(13);
+
+        System.out.println("Inorder traversal:");
+        bst.inorder(); // Output: 1 3 4 6 7 8 10 13 14
+
+        System.out.println("\nSearch 6: " + bst.search(6)); // Output: true
+        System.out.println("Search 11: " + bst.search(11)); // Output: false
+
+        bst.delete(3);
+        System.out.println("\nInorder traversal after deleting 3:");
+        bst.inorder(); // Output: 1 4 6 7 8 10 13 14
+    }
+}
+
+```
+
+</p>
+</details>
+
+### 2. Binary Search Tree (BST) validation: <a id="t2"></a>
 
 - Question: Write a function to determine if a binary tree is a valid binary search tree.
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
 - Space Complexity: O(h) where h is the height of the tree (space complexity due to recursion).
 
+<details>
+<summary>code</summary>
+<p>
+
+```java
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
+
+public class ValidateBinarySearchTree {
+    public static boolean isValidBST(TreeNode root) {
+        return isValidBST(root, null, null);
+    }
+    
+    private static boolean isValidBST(TreeNode node, Integer min, Integer max) {
+        // Base case: an empty tree is a valid BST
+        if (node == null) {
+            return true;
+        }
+        
+        // Check if the current node's value is within the valid range
+        if ((min != null && node.val <= min) || (max != null && node.val >= max)) {
+            return false;
+        }
+        
+        // Recursively check the left and right subtrees with updated range constraints
+        return isValidBST(node.left, min, node.val) && isValidBST(node.right, node.val, max);
+    }
+
+    public static void main(String[] args) {
+        // Example 1: [2,1,3]
+        TreeNode root1 = new TreeNode(2);
+        root1.left = new TreeNode(1);
+        root1.right = new TreeNode(3);
+        System.out.println("Is the binary tree valid BST? " + isValidBST(root1)); // Output: true
+        
+        // Example 2: [5,1,4,null,null,3,6]
+        TreeNode root2 = new TreeNode(5);
+        root2.left = new TreeNode(1);
+        root2.right = new TreeNode(4);
+        root2.right.left = new TreeNode(3);
+        root2.right.right = new TreeNode(6);
+        System.out.println("Is the binary tree valid BST? " + isValidBST(root2)); // Output: false
+    }
+}
+
+```
+
+</p>
+</details>
+
 ---
-### 2. Inorder Traversal of a Binary Tree: <a id="t2"></a>
+### 3. Inorder Traversal of a Binary Tree: <a id="t3"></a>
 
 - Question: Implement an inorder traversal of a binary tree (recursive or iterative).
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
 - Space Complexity: O(h) where h is the height of the tree (space complexity due to recursion or stack space in the iterative approach).
 
+<details>
+<summary>Recursive</summary>
+<p>
+
+```java
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
+
+public class InorderTraversal {
+    public static void inorderTraversalRecursive(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        inorderTraversalRecursive(root.left); // Traverse left subtree
+        System.out.print(root.val + " "); // Visit current node
+        inorderTraversalRecursive(root.right); // Traverse right subtree
+    }
+
+    public static void main(String[] args) {
+        // Example: [1,null,2,3]
+        TreeNode root = new TreeNode(1);
+        root.right = new TreeNode(2);
+        root.right.left = new TreeNode(3);
+        
+        System.out.println("Inorder traversal (recursive):");
+        inorderTraversalRecursive(root); // Output: 1 3 2
+    }
+}
+
+```
+
+</p>
+</details>
+
+<details>
+<summary>Iterative</summary>
+<p>
+
+```java
+import java.util.Stack;
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
+
+public class InorderTraversal {
+    public static void inorderTraversalIterative(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode current = root;
+        while (current != null || !stack.isEmpty()) {
+            // Traverse left subtree and push nodes onto the stack
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            // Visit the top node and move to its right subtree
+            current = stack.pop();
+            System.out.print(current.val + " ");
+            current = current.right;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Example: [1,null,2,3]
+        TreeNode root = new TreeNode(1);
+        root.right = new TreeNode(2);
+        root.right.left = new TreeNode(3);
+        
+        System.out.println("Inorder traversal (iterative):");
+        inorderTraversalIterative(root); // Output: 1 3 2
+    }
+}
+
+```
+
+</p>
+</details>
+
 ---
-### 3. Lowest Common Ancestor in a Binary Tree: <a id="t3"></a>
+### 4. Lowest Common Ancestor in a Binary Tree: <a id="t4"></a>
 
 - Question: Given a binary tree, find the lowest common ancestor of two given nodes in the tree.
 - Time Complexity: O(n) (linear time complexity where n is the number of nodes in the tree).
 - Space Complexity: O(h) where h is the height of the tree (space complexity due to recursion).
+
+```
+Input : binary tree: [3,5,1,6,2,0,8,null,null,7,4]
+Output : Lowest common ancestor of nodes 5 and 1 is: 3
+
+```
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+
+    TreeNode(int val) {
+        this.val = val;
+    }
+}
+
+public class LowestCommonAncestor {
+    public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root == p || root == q) {
+            return root;
+        }
+
+        // Recursively search for the LCA in the left and right subtrees
+        TreeNode leftLCA = lowestCommonAncestor(root.left, p, q);
+        TreeNode rightLCA = lowestCommonAncestor(root.right, p, q);
+
+        // If both nodes are found in different subtrees, the current root is the LCA
+        if (leftLCA != null && rightLCA != null) {
+            return root;
+        }
+
+        // If one node is found, return it (to propagate the LCA upwards)
+        return (leftLCA != null) ? leftLCA : rightLCA;
+    }
+
+    public static void main(String[] args) {
+        // Example binary tree: [3,5,1,6,2,0,8,null,null,7,4]
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(5);
+        root.right = new TreeNode(1);
+        root.left.left = new TreeNode(6);
+        root.left.right = new TreeNode(2);
+        root.right.left = new TreeNode(0);
+        root.right.right = new TreeNode(8);
+        root.left.right.left = new TreeNode(7);
+        root.left.right.right = new TreeNode(4);
+
+        TreeNode p = root.left;
+        TreeNode q = root.right;
+
+        TreeNode lca = lowestCommonAncestor(root, p, q);
+        System.out.println("Lowest common ancestor of nodes " + p.val + " and " + q.val + " is: " + lca.val);
+    }
+}
+
+```
+
+</p>
+</details>
 
 ---
 ## String Manipulation <a id="stringm"></a>
@@ -1745,3 +2625,482 @@ public class BFS {
 </details>
 
 ---
+
+## Heaps <a id="heaps"></a>
+
+### 1. Min Heap DataStructure <a id="h1"></a>
+
+- Question : Implement MinHeap Datastructure in java
+- Insert Operation:
+  - Time Complexity: O(log n), Space Complexity: O(1)
+- Extract Minimum Operation:
+  - Time Complexity: O(log n), Space Complexity: O(1)
+- Heapify Operation:
+  - Time Complexity: O(log n), Space Complexity: O(1)
+- Swap Operation:
+  - Time Complexity: O(1), Space Complexity: O(1)
+- Parent, Left Child, Right Child Calculation Operations:
+  - Time Complexity: O(1), Space Complexity: O(1)
+- Print Heap Operation:
+  - Time Complexity: O(n), Space Complexity: O(1)
+ 
+<details>
+<summary>binary min heap</summary>
+<p>
+
+```java
+public class MinHeap {
+    private int[] heap;
+    private int size;
+    private int capacity;
+
+    public MinHeap(int capacity) {
+        this.capacity = capacity;
+        this.size = 0;
+        this.heap = new int[capacity + 1];
+    }
+
+    public void insert(int value) {
+        if (size == capacity) {
+            System.out.println("Heap is full. Cannot insert more elements.");
+            return;
+        }
+        size++;
+        heap[size] = value;
+        int current = size;
+        while (current > 1 && heap[current] < heap[parent(current)]) {
+            swap(current, parent(current));
+            current = parent(current);
+        }
+    }
+
+    public int extractMin() {
+        if (size == 0) {
+            System.out.println("Heap is empty.");
+            return -1;
+        }
+        int min = heap[1];
+        heap[1] = heap[size];
+        size--;
+        heapify(1);
+        return min;
+    }
+
+    private void heapify(int pos) {
+        int left = leftChild(pos);
+        int right = rightChild(pos);
+        int smallest = pos;
+        if (left <= size && heap[left] < heap[pos]) {
+            smallest = left;
+        }
+        if (right <= size && heap[right] < heap[smallest]) {
+            smallest = right;
+        }
+        if (smallest != pos) {
+            swap(pos, smallest);
+            heapify(smallest);
+        }
+    }
+
+    private void swap(int i, int j) {
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+
+    private int parent(int pos) {
+        return pos / 2;
+    }
+
+    private int leftChild(int pos) {
+        return 2 * pos;
+    }
+
+    private int rightChild(int pos) {
+        return 2 * pos + 1;
+    }
+
+    public void printHeap() {
+        for (int i = 1; i <= size / 2; i++) {
+            System.out.print(" PARENT : " + heap[i] + " LEFT CHILD : " + heap[2 * i]
+                    + " RIGHT CHILD :" + heap[2 * i + 1]);
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        MinHeap minHeap = new MinHeap(10);
+        minHeap.insert(10);
+        minHeap.insert(20);
+        minHeap.insert(15);
+        minHeap.insert(40);
+        minHeap.insert(50);
+        minHeap.insert(100);
+        minHeap.insert(25);
+        minHeap.insert(45);
+        System.out.println("Min-Heap:");
+        minHeap.printHeap(); // Output: Min-Heap: PARENT : 10 LEFT CHILD : 20 RIGHT CHILD :15
+                            // PARENT : 20 LEFT CHILD : 25 RIGHT CHILD :40 PARENT : 15 LEFT CHILD : 100
+                            // RIGHT CHILD :45 PARENT : 40 LEFT CHILD : 50 RIGHT CHILD :45
+        System.out.println("Extracted Min: " + minHeap.extractMin()); // Output: Extracted Min: 10
+    }
+}
+
+```
+
+</p>
+</details>
+
+### 2. Max Heap Data Structure <a id="h2"></a>
+
+- Question : Implement Max Heap DataStructure
+- Insert Operation:
+  - Time Complexity: O(log n), Space Complexity: O(1)
+- Extract Maximum Operation:
+  - Time Complexity: O(log n), Space Complexity: O(1)
+- Heapify Operation:
+  - Time Complexity: O(log n), Space Complexity: O(1)
+- Swap Operation:
+  - Time Complexity: O(1), Space Complexity: O(1)
+- Parent, Left Child, Right Child Calculation Operations:
+  - Time Complexity: O(1), Space Complexity: O(1)
+- Print Heap Operation:
+  - Time Complexity: O(n), Space Complexity: O(1)
+ 
+<details>
+<summary>binary max heap</summary>
+<p>
+
+```java
+public class MaxHeap {
+    private int[] heap;
+    private int size;
+    private int capacity;
+
+    public MaxHeap(int capacity) {
+        this.capacity = capacity;
+        this.size = 0;
+        this.heap = new int[capacity + 1];
+    }
+
+    public void insert(int value) {
+        if (size == capacity) {
+            System.out.println("Heap is full. Cannot insert more elements.");
+            return;
+        }
+        size++;
+        heap[size] = value;
+        int current = size;
+        while (current > 1 && heap[current] > heap[parent(current)]) {
+            swap(current, parent(current));
+            current = parent(current);
+        }
+    }
+
+    public int extractMax() {
+        if (size == 0) {
+            System.out.println("Heap is empty.");
+            return -1;
+        }
+        int max = heap[1];
+        heap[1] = heap[size];
+        size--;
+        heapify(1);
+        return max;
+    }
+
+    private void heapify(int pos) {
+        int left = leftChild(pos);
+        int right = rightChild(pos);
+        int largest = pos;
+        if (left <= size && heap[left] > heap[pos]) {
+            largest = left;
+        }
+        if (right <= size && heap[right] > heap[largest]) {
+            largest = right;
+        }
+        if (largest != pos) {
+            swap(pos, largest);
+            heapify(largest);
+        }
+    }
+
+    private void swap(int i, int j) {
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+
+    private int parent(int pos) {
+        return pos / 2;
+    }
+
+    private int leftChild(int pos) {
+        return 2 * pos;
+    }
+
+    private int rightChild(int pos) {
+        return 2 * pos + 1;
+    }
+
+    public void printHeap() {
+        for (int i = 1; i <= size / 2; i++) {
+            System.out.print(" PARENT : " + heap[i] + " LEFT CHILD : " + heap[2 * i]
+                    + " RIGHT CHILD :" + heap[2 * i + 1]);
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        MaxHeap maxHeap = new MaxHeap(10);
+        maxHeap.insert(10);
+        maxHeap.insert(20);
+        maxHeap.insert(15);
+        maxHeap.insert(40);
+        maxHeap.insert(50);
+        maxHeap.insert(100);
+        maxHeap.insert(25);
+        maxHeap.insert(45);
+        System.out.println("Max-Heap:");
+        maxHeap.printHeap(); // Output: Max-Heap: PARENT : 100 LEFT CHILD : 50 RIGHT CHILD :45
+                             // PARENT : 50 LEFT CHILD : 40 RIGHT CHILD :25 PARENT : 45 LEFT CHILD : 20
+                             // RIGHT CHILD :10
+        System.out.println("Extracted Max: " + maxHeap.extractMax()); // Output: Extracted Max: 100
+    }
+}
+
+```
+
+</p>
+</details>
+
+---
+
+### 3. Find the Kth Largest Element in an Array <a id="h3"></a>
+
+- Question : Find the Kth largest element in an array using a min-heap.
+- Time Complexity: O(n log k) where n is the size of the array and k is the value of K.
+- Space Complexity: O(k) for maintaining the min-heap of size k.
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+import java.util.PriorityQueue;
+
+public class KthLargestElement {
+    public static int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for (int num : nums) {
+            minHeap.add(num);
+            if (minHeap.size() > k) {
+                minHeap.poll();
+            }
+        }
+        return minHeap.peek();
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 2, 1, 5, 6, 4};
+        int k = 2;
+        System.out.println("Kth largest element: " + findKthLargest(nums, k)); // Output: 5
+    }
+}
+
+/*
+When you call minHeap.poll(), it retrieves and removes the head (minimum) element of the min-heap. After the removal, the heap property is maintained, ensuring that the next smallest element becomes the new head of the heap.
+
+Here's a breakdown of what minHeap.poll() does:
+
+Retrieves the minimum element from the min-heap (the element at the root).
+Removes this minimum element from the min-heap.
+Rebalances the heap by adjusting the elements to ensure that the heap property (parent node is smaller than its children) is maintained.
+*/
+
+```
+
+</p>
+</details>
+
+---
+### 4. Merge K Sorted Lists <a id="h4"></a>
+
+- Question: Merge k sorted linked lists and return it as one sorted list.
+- Time Complexity: O(n log k) where n is the total number of nodes in all lists and k is the number of lists.
+- Space Complexity: O(k) for maintaining the min-heap of size k
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+import java.util.PriorityQueue;
+
+public class MergeKSortedLists {
+    private static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int val) {
+            this.val = val;
+        }
+    }
+
+    public static ListNode mergeKLists(ListNode[] lists) {
+        PriorityQueue<ListNode> minHeap = new PriorityQueue<>((a, b) -> a.val - b.val);
+        for (ListNode node : lists) {
+            if (node != null) {
+                minHeap.add(node);
+            }
+        }
+
+        ListNode dummy = new ListNode(-1);
+        ListNode tail = dummy;
+        while (!minHeap.isEmpty()) {
+            ListNode minNode = minHeap.poll();
+            tail.next = minNode;
+            tail = tail.next;
+            if (minNode.next != null) {
+                minHeap.add(minNode.next);
+            }
+        }
+
+        return dummy.next;
+    }
+
+    public static void main(String[] args) {
+        ListNode[] lists = new ListNode[3];
+        lists[0] = new ListNode(1);
+        lists[0].next = new ListNode(4);
+        lists[0].next.next = new ListNode(5);
+
+        lists[1] = new ListNode(1);
+        lists[1].next = new ListNode(3);
+        lists[1].next.next = new ListNode(4);
+
+        lists[2] = new ListNode(2);
+        lists[2].next = new ListNode(6);
+
+        ListNode mergedList = mergeKLists(lists);
+        while (mergedList != null) {
+            System.out.print(mergedList.val + " "); // Output: 1 1 2 3 4 4 5 6
+            mergedList = mergedList.next;
+        }
+    }
+}
+
+```
+
+</p>
+</details>
+
+
+---
+### 5. Find the Kth Smallest Element in a Sorted Matrix <a id="h5"></a>
+
+- Question: Given a n x n matrix where each of the rows and columns are sorted in ascending order, find the kth smallest element in the matrix.
+- Time Complexity: O(k log n) where n is the size of the matrix (n x n).
+- Space Complexity: O(n) for maintaining the min-heap.
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+import java.util.PriorityQueue;
+
+public class KthSmallestInMatrix {
+    public static int kthSmallest(int[][] matrix, int k) {
+        PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[0] - b[0]);
+        int n = matrix.length;
+        for (int i = 0; i < n; i++) {
+            minHeap.add(new int[]{matrix[i][0], i, 0});
+        }
+        int result = 0;
+        for (int i = 0; i < k; i++) {
+            int[] min = minHeap.poll();
+            result = min[0];
+            int row = min[1];
+            int col = min[2];
+            if (col < n - 1) {
+                minHeap.add(new int[]{matrix[row][col + 1], row, col + 1});
+            }
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = {
+            {1,  5,  9},
+            {10, 11, 13},
+            {12, 13, 15}
+        };
+        int k = 8;
+        System.out.println("Kth smallest element: " + kthSmallest(matrix, k)); // Output: 13
+    }
+}
+
+```
+
+</p>
+</details>
+
+
+---
+### 6. Find Median from Data Stream <a id="h6"></a>
+
+- Question: Design a data structure that supports the following two operations:
+  - `void addNum(int num)` - Add a integer number from the data stream to the data structure.
+  - `double findMedian()` - Return the median of all elements so far.
+- Time Complexity: O(log n) for adding a number and O(1) for finding the median.
+- Space Complexity: O(n) for maintaining the max-heap and min-heap
+
+<details>
+<summary>code</summary>
+<p>
+
+```java
+import java.util.PriorityQueue;
+
+public class MedianFinder {
+    PriorityQueue<Integer> minHeap;
+    PriorityQueue<Integer> maxHeap;
+
+    public MedianFinder() {
+        minHeap = new PriorityQueue<>();
+        maxHeap = new PriorityQueue<>((a, b) -> b - a);
+    }
+
+    public void addNum(int num) {
+        maxHeap.add(num);
+        minHeap.add(maxHeap.poll());
+        if (maxHeap.size() < minHeap.size()) {
+            maxHeap.add(minHeap.poll());
+        }
+    }
+
+    public double findMedian() {
+        if (maxHeap.size() == minHeap.size()) {
+            return (maxHeap.peek() + minHeap.peek()) / 2.0;
+        } else {
+            return maxHeap.peek();
+        }
+    }
+
+    public static void main(String[] args) {
+        MedianFinder finder = new MedianFinder();
+        finder.addNum(1);
+        finder.addNum(2);
+        System.out.println("Median: " + finder.findMedian()); // Output: 1.5
+        finder.addNum(3);
+        System.out.println("Median: " + finder.findMedian()); // Output: 2.0
+    }
+}
+
+```
+
+</p>
+</details>
+
+--- 
+
