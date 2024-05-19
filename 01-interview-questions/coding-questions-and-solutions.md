@@ -65,11 +65,27 @@ public class tUf {
 ---
 
 ### 2. Implement an algorithm to rotate an array - [gfg](https://www.geeksforgeeks.org/array-rotation/)
+
+    ```
+    Input: 
+    N = 7, d = 2 ,arr[] = {1, 2, 3, 4, 5, 6, 7}
+    Output: 3 4 5 6 7 1 2
+    
+    Input: N = 7, d=2 , arr[] = {3, 4, 5, 6, 7, 1, 2},
+    Output: 5 6 7 1 2 3 4
+    ```
 <details>
 <summary>Answer</summary>
 <p>
 
+1. Using Temp Array
+2. Rotate one by one
+3. Juggling Algorithm - use GCD
+4. Reversal Algorithm
 
+```java
+
+```
 
 </p>
 </details>
